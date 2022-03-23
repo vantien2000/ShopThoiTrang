@@ -1,0 +1,20 @@
+.error {
+    color: #F00 !important;
+}
+
+.form-pass-login {
+    position: relative;
+}
+
+.form-pass-login>input {
+    padding-right: 40px;
+}
+
+.icon-eyes {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transform: translate(-50%, 55%);
+    font-size: 1.3rem !important;
+    cursor: pointer;
+}
