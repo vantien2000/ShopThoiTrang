@@ -18,3 +18,10 @@
     font-size: 1.3rem !important;
     cursor: pointer;
 }
+
+.img-profile {
+    width: 90%;
+    height: attr(width);
+    border-radius: 10px;
+    object-fit: cover;
+}
