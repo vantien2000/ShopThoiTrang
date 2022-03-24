@@ -20,16 +20,15 @@ class AuthenRouterAdmin
     {
         $current = $request->route()->getName();
         $prevUrl = url()->previous();
-        if (Auth::guard($guard)->check()) {
-            if ($current == 'admin.login' || $prevUrl == route('admin.login')) {
+        if (Auth::guard($guard)->check())
+        {
+            if ($current == 'admin.login' || route($current) == $prevUrl) {
                 return Redirect()->route('admin.home');
             }
             return $next($request);
-        } else {
-            if ($current == 'admin.home' || $prevUrl == route('admin.home')) {
-                return Redirect()->route('admin.login');
-            }
-            return $next($request);
+        }
+        if ($current == 'admin.home' || route($current) == $prevUrl) {
+            return Redirect()->route('admin.login');
         }
         return $next($request);
     }

@@ -39,7 +39,8 @@
                 </div>
                 <div class="col-lg-7 col-xl-8">
                     <div class="shadow-sm rounded bg-white p-4 mb-4">
-                        <form>
+                        <form action="{{ route('admin.profile.post') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3>Change Profile</h3>
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -69,7 +70,7 @@
                                         <div class="">
                                             <img class="img-profile" src="{{ asset('admins/images/profile/3.jpg') }}" alt="">
                                         </div>
-                                        <input type="file" class="form-control" name="" id="">
+                                        <input type="file" class="form-control" name="avatar" id="">
                                     </div>
                                 </div>
                             </div>
