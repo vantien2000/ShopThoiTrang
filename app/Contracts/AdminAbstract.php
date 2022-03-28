@@ -1,9 +1,9 @@
 <?php
-namespace App\Contrats;
+namespace App\Contracts;
 
-use App\Contrats\AdminInterface as ContratsAdminInterface;
+use App\Contracts\AdminInterface as ContractsAdminInterface;
 
-abstract class AdminAbstract implements ContratsAdminInterface
+abstract class AdminAbstract implements ContractsAdminInterface
 {
     protected $modal;
 
@@ -15,16 +15,16 @@ abstract class AdminAbstract implements ContratsAdminInterface
         return $this->modal()->create($array);
     }
 
-    public function show($id) {
-        return $this->modal()->find($id);
+    public function show($id, $key) {
+        return $this->modal()->where($key, $id)->first();
     }
 
-    public function edit($id, $array) {
-        return $this->modal->update($array, ['id' => $id]);
+    public function edit($id, $key, $array) {
+        return $this->modal->where($key, $id)->update($array);
     }
 
-    public function delete($id) {
-        return $this->modal->delete($id);
+    public function delete($id, $key) {
+        return $this->modal->where($key, $id)->delete();
     }
 
     public function all() {

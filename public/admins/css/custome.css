@@ -19,9 +19,32 @@
     cursor: pointer;
 }
 
+.nav-header-admin {
+    background-color: #fff !important;
+}
+
+.nav-header-admin .brand-logo .logo-text-admin{
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: darkblue;
+}
+
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .img-profile {
-    width: 90%;
+    width: 150px;
+    height: 150px;
     height: attr(width);
-    border-radius: 10px;
     object-fit: cover;
+}
+
+.close-cate-form,
+.close-type-form {
+    font-size: 1.5rem !important;
+    cursor: pointer;
 }

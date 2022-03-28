@@ -19,16 +19,15 @@ class AuthenRouterAdmin
     public function handle($request, Closure $next, $guard = null)
     {
         $current = $request->route()->getName();
-        $prevUrl = url()->previous();
-        if (Auth::guard($guard)->check())
+        if (Auth::check())
         {
-            if ($current == 'admin.login' || route($current) == $prevUrl) {
-                return Redirect()->route('admin.home');
+            if ($current == 'admin.login') {
+                return redirect()->back();
             }
             return $next($request);
         }
-        if ($current == 'admin.home' || route($current) == $prevUrl) {
-            return Redirect()->route('admin.login');
+        if ($current == 'admin.home') {
+            return redirect()->route('admin.login');
         }
         return $next($request);
     }

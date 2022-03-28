@@ -1,5 +1,5 @@
 <?php
-namespace App\Contrats;
+namespace App\Contracts;
 
 interface AdminInterface 
 {
@@ -8,11 +8,11 @@ interface AdminInterface
 
     public function store(array $array);
 
-    public function show($id);
+    public function show($id, $key);
 
-    public function edit($id, array $array);
+    public function edit($id, $key, array $array);
 
-    public function delete($id);
+    public function delete($id, $key);
 
     public function all();
 }

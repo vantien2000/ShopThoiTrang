@@ -1,15 +1,17 @@
 <?php
-namespace App\Contrats\Repositories;
+namespace App\Contracts\Repositories;
 
-use App\Contrats\AdminAbstract;
+use App\Contracts\AdminAbstract;
 use Models\UserData;
 
 class ProfileAdminRepository extends AdminAbstract
 {
-    protected UserData $userData;
-
-    public function __construct($userData)
+    public function __construct(UserData $userData)
     {
         $this->modal = $userData;
+    }
+
+    public function editProfile($email, $array) {
+        return $this->modal->where('email', $email)->update($array);
     }
 }
