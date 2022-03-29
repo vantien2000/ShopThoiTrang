@@ -272,3 +272,6 @@ ALTER TABLE `types`
 COMMIT;
 
 ALTER TABLE user_data ADD avatar text null
+ALTER TABLE categories ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1:show'
+ALTER TABLE types ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1:show'
+ALTER TABLE categories ADD UNIQUE (`category_name`)

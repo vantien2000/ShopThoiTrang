@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\Admin\ListService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Admin\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -15,34 +15,36 @@ class CategoryController extends Controller
         $this->listService = $listService;
     }
 
-    public function index() {
+    public function categoryShow(Request $request) {
+        $category_name = $request->category_name ?? '';
+        $status = $request->status ?? '';
+        $sort_num = $request->sort_num ?? '';
+        $sort_alpha = $request->sort_alpha ?? '';
         $categories = $this->listService->showCate();
-        $types = $this->listService->showType();
         return view('admin.categories.index',compact(
             'categories',
-            'types'
         ));
     }
 
-    public function addCategory(Request $request) {
-        $category = $this->listService->addCate($request->all());
-        if(!empty($request->category_name)) {
-            $message = 'Thêm thành công';
-        } else{
-            $message = 'Category name không được bỏ trống';
+    public function addCategory(CategoryRequest $request) {
+        $data = $this->listService->renderDataChecked($request->all());
+        if(isset($data['mgs'])) {
+            return redirect()->back()->withErrors(['mgs', $data['mgs']]);
+        } else {
+            $this->listService->addCate($data);
         }
-        return response()->json(['category' => $category, 'message' => $message]);
+        return redirect()->route('admin.categories');
     }
     
-    public function editCategory(Request $request) {
-        $category_id = $request->id;
-        $category = $this->listService->editCate($category_id, $request->all());
-        if(!empty($request->category_name)) {
-            $message = 'Sửa thành công';
+    public function editCategory(CategoryRequest $request) {
+        $data = $this->listService->renderDataChecked($request->all());
+        if(isset($data['mgs'])) {
+            return redirect()->back()->withErrors(['mgs', $data['mgs']]);
         } else {
-            $message = 'Category name không được bỏ trống';
+            unset($data['_token']);
+            $this->listService->editCate($request->id, $data);
         }
-        return response()->json(['category' => $category, 'message' => $message]);
+        return redirect()->route('admin.categories');
     }
 
     public function deleteCategory(Request $request) {
@@ -89,4 +91,6 @@ class CategoryController extends Controller
         }
         return response()->json(['deleted' => $type, 'message' => $message]);
     }
+
+    
 }

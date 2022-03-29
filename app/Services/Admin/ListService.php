@@ -31,26 +31,14 @@ class ListService
     }
 
     public function addCate($array) {
-        if(empty($array['category_name'])) {
-            return;
-        }
         return $this->cateRepository->store($array);
     }
 
     public function editCate($id, $array, $key = CATEGORY_ID_KEY) {
-        if(empty($array['category_name'])) {
-            return;
-        }
-        $checkUpdate =  $this->cateRepository->edit($id, $key, $array);
-        if($checkUpdate) {
-            return $this->cateRepository->show($id, $key);
-        }
+        return $this->cateRepository->edit($id, $key, $array);
     }
 
     public function deleteCate($id, $key = CATEGORY_ID_KEY) {
-        if (empty($id)) {
-            return;
-        }
         return $this->cateRepository->delete($id, $key);
     }
 
@@ -76,5 +64,13 @@ class ListService
             return;
         }
         return $this->typeRepository->delete($id, $key);
+    }
+
+    public function renderDataChecked($array) {
+        $array['status'] = empty($array['status']) ? STATUS_OFF : STATUS_ON;
+        if($array['status'] > 1) {
+            $array['mgs'] = 'Giá trị hiển thị không đúng!';
+        }
+        return $array;
     }
 }

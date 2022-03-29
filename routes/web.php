@@ -20,10 +20,11 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::get('/profile', 'Admin\ProfileController@index')->name('admin.profile');
     Route::post('/editProfile', 'Admin\ProfileController@editProfile')->name('admin.profile.post');
     //categories
-    Route::get('/list', 'Admin\CategoryController@index')->name('admin.list');
+    Route::get('/categories', 'Admin\CategoryController@categoryShow')->name('admin.categories');
     Route::post('/add-category', 'Admin\CategoryController@addCategory')->name('admin.category.add');
     Route::post('/edit-category/{id}', 'Admin\CategoryController@editCategory')->name('admin.category.edit');
-    Route::post('/delete-category/{id}', 'Admin\CategoryController@deleteCategory')->name('admin.category.delete');
+    Route::get('/delete-category/{id}', 'Admin\CategoryController@deleteCategory')->name('admin.category.delete');
+    Route::get('/categories/{category_name?}/{status?}/{sort_num?}/{sort_alpha?}', 'Admin\CategoryController@categoryShow')->name('admin.categories.filter');
 
     Route::post('/add-type', 'Admin\CategoryController@addType')->name('admin.type.add');
     Route::post('/edit-type/{id}', 'Admin\CategoryController@editType')->name('admin.type.edit');

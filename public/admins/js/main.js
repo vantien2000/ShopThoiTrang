@@ -12,46 +12,11 @@ $(document).ready(function() {
     let image_preview_profile = $('.img-profile');
     previewImage(file_avatar_profile, image_preview_profile);
 
-    $(".cate-add-btn").on('click', function() {
-        $('.cate-form-add').removeClass('d-none');
-        $('.cate-add-btn').addClass('d-none');
-    });
-
-    $(".type-add-btn").on('click', function() {
-        $('.type-form-add').removeClass('d-none');
-        $('.type-add-btn').addClass('d-none');
-    });
-
-    $('.cate-form-edit .close-cate-form').on('click', function () {
-        $('.cate-form-edit').addClass('d-none');
-        $('.cate-add-btn').removeClass('d-none');
-    });
-
-    $('.cate-form-add .close-cate-form').on('click', function () {
-        $('.cate-form-add').addClass('d-none');
-        $('.cate-add-btn').removeClass('d-none');
-    });
-
-    $('.type-form-edit .close-type-form').on('click', function () {
-        $('.type-form-edit').addClass('d-none');
-        $('.type-add-btn').removeClass('d-none');
-    });
-
-    $('.type-form-add .close-type-form').on('click', function () {
-        $('.type-form-add').addClass('d-none');
-        $('.type-add-btn').removeClass('d-none');
-    });
-
-    $('.table-data-cate .edit-btn').on('click', function() {
-        $('.cate-form-edit').removeClass('d-none');
-        $('#form-cate-edit').attr('action', $(this).data("edit-url"));
-        $('.cate-add-btn').removeClass('d-none');
-    });
-
-    $('.table-data-type .edit-btn').on('click', function() {
-        $('.type-form-edit').removeClass('d-none');
-        $('#form-type-edit').attr('action', $(this).data("edit-url"));
-        $('.type-add-btn').removeClass('d-none');
+    $('.table-categiories .edit-btn').click(function(e) {
+        $('#form-cate').attr('action', $(this).data('edit-url'));
+        $('#form-cate .cate-title').text('Sửa danh mục');
+        $('#form-cate #category_name').val($(this).data('cate-name'));
+        $('#form-cate .sbm-cate').text('Edit');
     });
 });
 

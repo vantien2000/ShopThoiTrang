@@ -48,3 +48,41 @@
     font-size: 1.5rem !important;
     cursor: pointer;
 }
+
+.switch-toggle[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.switch-btn {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 40px;
+	height: 20px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.switch-btn:after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 4px;
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.switch-toggle:checked + .switch-btn {
+	background: #843cf6;
+}
+
+.switch-toggle:checked + .switch-btn:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
