@@ -42,7 +42,6 @@ $(document).ready(function() {
         $('.type-add-btn').removeClass('d-none');
     });
 
-
     $('.table-data-cate .edit-btn').on('click', function() {
         $('.cate-form-edit').removeClass('d-none');
         $('#form-cate-edit').attr('action', $(this).data("edit-url"));
@@ -53,7 +52,7 @@ $(document).ready(function() {
         $('.type-form-edit').removeClass('d-none');
         $('#form-type-edit').attr('action', $(this).data("edit-url"));
         $('.type-add-btn').removeClass('d-none');
-    })
+    });
 });
 
 function previewImage(file, image) {

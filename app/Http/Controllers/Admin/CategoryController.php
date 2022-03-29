@@ -71,7 +71,7 @@ class CategoryController extends Controller
         $type_id = $request->id;
         $type = $this->listService->editType($type_id, $request->all());
         $category = $this->listService->showCateById($request->category_id);
-        if(!empty($request->type_name)) {
+        if(!empty($category)) {
             $message = 'Sửa thành công';
         } else {
             $message = 'Category name không được bỏ trống';
@@ -81,8 +81,8 @@ class CategoryController extends Controller
 
     public function deleteType(Request $request) {
         $type_id = $request->id;
-        $type = $this->listService->deleteCate($type_id);
-        if(empty($category_id)) {
+        $type = $this->listService->deleteType($type_id);
+        if(empty($type)) {
             $message = 'không xóa được thông tin này';
         } else {
             $message = 'Xóa thành công';

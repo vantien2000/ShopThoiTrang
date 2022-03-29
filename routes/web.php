@@ -15,9 +15,7 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::get('/login', 'Admin\LoginController@login')->name('admin.login');
     Route::post('/postLogin', 'Admin\LoginController@postLogin')->name('admin.login.post');
     Route::get('/logout', 'Admin\LoginController@logout')->name('admin.logout');
-
     Route::get('/', 'Admin\HomeController@index')->name('admin.home');
-
     //profile
     Route::get('/profile', 'Admin\ProfileController@index')->name('admin.profile');
     Route::post('/editProfile', 'Admin\ProfileController@editProfile')->name('admin.profile.post');
