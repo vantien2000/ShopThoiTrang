@@ -17,7 +17,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.categories') }}">Danh Mục</a></li>
-                    <li><a href="./ui-alert.html">Loại</a></li>
+                    <li><a href="{{ route('admin.types') }}">Loại</a></li>
                 </ul>
             </li>
         </ul>

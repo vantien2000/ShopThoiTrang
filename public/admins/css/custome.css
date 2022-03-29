@@ -86,3 +86,9 @@
 	left: calc(100% - 5px);
 	transform: translateX(-100%);
 }
+
+.btn-sort-num:checked + label,
+.btn-sort-alpha:checked + label {
+    background-color: #fc5286;
+    border: 1px solid #fc5286;
+}

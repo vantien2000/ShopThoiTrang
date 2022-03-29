@@ -14,7 +14,8 @@ class Types extends Model
     protected $fillable = [
         'type_id',
         'type_name',
-        'category_id'
+        'category_id',
+        'status'
     ];
 
     public $timestamps = false;

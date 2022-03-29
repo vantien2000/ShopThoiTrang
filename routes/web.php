@@ -11,6 +11,8 @@
 |
 */
 
+use Models\Categories;
+
 Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::get('/login', 'Admin\LoginController@login')->name('admin.login');
     Route::post('/postLogin', 'Admin\LoginController@postLogin')->name('admin.login.post');
@@ -26,7 +28,9 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::get('/delete-category/{id}', 'Admin\CategoryController@deleteCategory')->name('admin.category.delete');
     Route::get('/categories/{category_name?}/{status?}/{sort_num?}/{sort_alpha?}', 'Admin\CategoryController@categoryShow')->name('admin.categories.filter');
 
-    Route::post('/add-type', 'Admin\CategoryController@addType')->name('admin.type.add');
-    Route::post('/edit-type/{id}', 'Admin\CategoryController@editType')->name('admin.type.edit');
-    Route::post('/delete-type/{id}', 'Admin\CategoryController@deleteType')->name('admin.type.delete');
+    Route::get('/types', 'Admin\TypeController@typeShow')->name('admin.types');
+    Route::post('/add-type', 'Admin\TypeController@addType')->name('admin.type.add');
+    Route::post('/edit-type/{id}', 'Admin\TypeController@editType')->name('admin.type.edit');
+    Route::get('/delete-type/{id}', 'Admin\TypeController@deleteType')->name('admin.type.delete');
+    Route::get('/types/{category_name?}/{status?}/{sort_num?}/{sort_alpha?}', 'Admin\TypeController@typeShow')->name('admin.type.filter');
 });

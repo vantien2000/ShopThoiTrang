@@ -15,8 +15,17 @@ $(document).ready(function() {
     $('.table-categiories .edit-btn').click(function(e) {
         $('#form-cate').attr('action', $(this).data('edit-url'));
         $('#form-cate .cate-title').text('Sửa danh mục');
-        $('#form-cate #category_name').val($(this).data('cate-name'));
         $('#form-cate .sbm-cate').text('Edit');
+    });
+
+    $('.table-types .edit-btn').click(function(e) {
+        let status = $(this).data('status') == 1;
+        $('#form-type').attr('action', $(this).data('edit-url'));
+        $('#form-type .type-title').text('Sửa loại');
+        $('#form-type #type_name').val($(this).data('type-name'));
+        $('#form-type #category_name').val($(this).data('cate-id'));
+        $('#form-type .switch-toggle').prop('checked', status);
+        $('#form-type .sbm-type').text('Edit');
     });
 });
 

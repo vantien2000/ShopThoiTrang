@@ -18,12 +18,16 @@ class ListService
         $this->typeRepository = $typeRepository;
     }
 
-    public function showCate() {
+    public function showCate($array) {
+        return $this->cateRepository->filter($array);
+    }
+
+    public function showAllCate() {
         return $this->cateRepository->all();
     }
 
-    public function showType() {
-        return $this->typeRepository->all();
+    public function showType($array) {
+        return $this->typeRepository->filter($array);
     }
 
     public function showCateById($category_id, $key = CATEGORY_ID_KEY) {
@@ -43,9 +47,6 @@ class ListService
     }
 
     public function addType($array) {
-        if(empty($array['type_name']) || empty($array['category_id'])) {
-            return;
-        }
         return $this->typeRepository->store($array);
     }
 

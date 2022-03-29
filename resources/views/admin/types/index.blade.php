@@ -10,13 +10,21 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <form id="form-cate" action="{{ route('admin.category.add') }}" method="POST">
+                            <form id="form-type" action="{{ route('admin.type.add') }}" method="POST">
                                 @csrf
-                                <h3 class="mb-3 cate-title">Thêm danh mục</h3>
+                                <h3 class="mb-3 type-title">Thêm loại</h3>
                                 <div class="form-group">
-                                    <label for="category_name">Tên danh mục (<span class="text-danger">*</span>)</label>
-                                    <input name="category_name" value="{{ old('category_name') }}" id="category_name" class="form-control" type="text" placeholder="Tên Danh Mục">
-                                    {!! $errors->first('category_name','<span class="text-danger">:message</span>') !!}
+                                    <label for="type_name">Tên loại (<span class="text-danger">*</span>)</label>
+                                    <input name="type_name" value="{{ old('type_name') }}" id="type_name" class="form-control" type="text" placeholder="Tên loại">
+                                    {!! $errors->first('type_name','<span class="text-danger">:message</span>') !!}
+                                </div>
+                                <div class="form-group">
+                                    <label for="category_id">Tên danh mục</label>
+                                    <select name="category_id" class="form-control" id="category_name">
+                                        @foreach ($categories as $cate)
+                                            <option value="{{ $cate->category_id }}">{{ $cate->category_name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Hiển thị</label>
@@ -24,7 +32,7 @@
                                     <label class="switch-btn" for="status"></label>
                                     {!! $errors->first('mgs','<span class="text-danger">' . $errors->first('mgs') . '</span>') !!}
                                 </div>
-                                <button class="btn sbm-cate btn-primary submit w-10">Add</button>
+                                <button class="btn sbm-type btn-primary submit w-10">Add</button>
                             </form>
                         </div>
                     </div>
@@ -32,12 +40,20 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.categories.filter') }}" method="GET">
+                            <form action="{{ route('admin.type.filter') }}" method="GET">
                                 @csrf
                                 <h3 class="mb-3">Lọc/Tìm Kiếm</h3>
                                 <div class="form-group">
-                                    <label for="category_name">Tên danh mục</label>
+                                    <label for="category_name">Tên Loại</label>
                                     <input type="text" class="form-control" name="category_name" placeholder="Keyword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="category_name">Tên danh mục</label>
+                                    <select name="category_id" class="form-control">
+                                        @foreach ($categories as $cate)
+                                            <option value="{{ $cate->category_id }}">{{ $cate->category_name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group m-0 d-flex justify-content-between align-items-center">
                                     <div class="col-ms-6">
@@ -66,26 +82,29 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered verticle-middle table-categiories">
+                                <table class="table table-bordered verticle-middle table-types">
                                     <thead>
                                         <tr>
                                             <th scope="col">Mã danh mục</th>
+                                            <th scope="col">Tên Loại</th>
                                             <th scope="col">Tên Danh Mục</th>
                                             <th scope="col">Hiển thị</th>
                                             <th scope="col">Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($categories as $cate)
+                                        @foreach ($types as $type)
                                         <tr>
-                                            <td>{{ $cate->category_id }}</td>
-                                            <td>{{ $cate->category_name }}</td>
+                                            <td>{{ $type->type_id }}</td>
+                                            <td>{{ $type->type_name }}</td>
+                                            <td>{{ $type->categories->category_name }}</td>
                                             <td>
-                                                <span class="{{ $cate->status == 0 ? 'fa fa-square-o' : 'fa fa-check-square-o'}} w-30"></span>
+                                                <span class="{{ $type->status == 0 ? 'fa fa-square-o' : 'fa fa-check-square-o'}} w-30"></span>
                                             </td>
                                             <td><span>
-                                                <a href="javascript:void(0)" class="edit-btn" data-cate-name="{{ $cate->category_name }}" data-edit-url="{{ route('admin.category.edit',['id' => $cate->category_id]) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
-                                                <a href="javascript:void(0)" class="delete-btn" data-delete-url="{{ route('admin.category.delete',['id' => $cate->category_id]) }}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
+                                                <a href="javascript:void(0)" class="edit-btn" data-cate-id="{{ $type->categories->category_id }}" data-type-name="{{ $type->type_name }}" data-edit-url="{{ route('admin.type.edit',['id' => $type->type_id]) }}" 
+                                                data-status="{{ $type->status }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+                                                <a href="javascript:void(0)" class="delete-btn" data-delete-url="{{ route('admin.type.delete',['id' => $type->type_id]) }}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
                                             </td>
                                         </tr>
                                         @endforeach
