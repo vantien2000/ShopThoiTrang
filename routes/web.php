@@ -11,7 +11,12 @@
 |
 */
 
+use Illuminate\Support\Facades\Cache as FacadesCache;
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Redis;
 use Models\Categories;
+use Models\Types;
+use Models\UserData;
 
 Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::get('/login', 'Admin\LoginController@login')->name('admin.login');
@@ -33,4 +38,7 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::post('/edit-type/{id}', 'Admin\TypeController@editType')->name('admin.type.edit');
     Route::get('/delete-type/{id}', 'Admin\TypeController@deleteType')->name('admin.type.delete');
     Route::get('/types/{category_name?}/{status?}/{sort_num?}/{sort_alpha?}', 'Admin\TypeController@typeShow')->name('admin.type.filter');
+
+    Route::get('/products', 'Admin\ProductController@index')->name('admin.products');
+    Route::get('/add-product', 'Admin\ProductController@addProduct')->name('admin.products');
 });

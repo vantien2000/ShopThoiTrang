@@ -110,6 +110,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                @include('admin.pagination.index', ['paginator' => $types])
                             </div>
                         </div>
                     </div>

@@ -25,6 +25,7 @@ class CategoryAdminRepository extends AdminAbstract
         if ($array['status']) {
             $category->where('status', $array['status']);
         }
-        return $category->get();
+        //pagination
+        return $category->paginate(5);
     }
 }

@@ -92,3 +92,24 @@
     background-color: #fc5286;
     border: 1px solid #fc5286;
 }
+
+.pagination {
+    margin: 0px;
+    justify-content: right;
+}
+
+.pagination li {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+}
+
+.pagination li.active {
+    background-color: #7571f9;
+    border-color: #7571f9;
+}
+
+.pagination li.active a {
+    color: #fff !important;
+}

@@ -28,6 +28,6 @@ class TypeAdminRepository extends AdminAbstract
         if ($array['status']) {
             $type->where('status', $array['status']);
         }
-        return $type->get();
+        return $type->paginate(5);
     }
 }

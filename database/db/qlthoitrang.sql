@@ -271,7 +271,8 @@ ALTER TABLE `types`
   ADD CONSTRAINT `FK_cate_type` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
-ALTER TABLE user_data ADD avatar text null
-ALTER TABLE categories ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1:show'
-ALTER TABLE types ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1:show'
-ALTER TABLE categories ADD UNIQUE (`category_name`)
+ALTER TABLE user_data ADD avatar text null;
+ALTER TABLE categories ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1:show';
+ALTER TABLE types ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1:show';
+ALTER TABLE categories ADD UNIQUE (`category_name`);
+ALTER TABLE products ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1: show';
