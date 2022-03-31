@@ -1,10 +1,10 @@
 <!--**********************************
 Scripts
 ***********************************-->
+<script src="{{ asset('admins/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ asset('admins/plugins/common/common.min.js') }}"></script>
 <script src="{{ asset('admins/js/plugins-init/jquery-validate.js') }}"></script>
 <script src="{{ asset('admins/js/plugins-init/sweetalert.js') }}"></script>
-<script src="{{ asset('admins/js/custom.min.js') }}"></script>
 <script src="{{ asset('admins/js/styleSwitcher.js') }}"></script>
 <script src="{{ asset('admins/js/main.js') }}"></script>
 <script src="{{ asset('admins/js/validation_form.js') }}"></script>
@@ -27,3 +27,4 @@ Scripts
 <script src="{{ asset('admins/plugins/chartist/js/chartist.min.js') }}"></script>
 <script src="{{ asset('admins/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
 <script src="{{ asset('admins/js/dashboard/dashboard-1.js') }}"></script>
+@include('ckfinder::setup')

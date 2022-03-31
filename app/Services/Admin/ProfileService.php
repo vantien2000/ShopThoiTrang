@@ -13,7 +13,7 @@ class ProfileService
     }
 
     public function getProfileAdmin() {
-        return $this->profileRepository->show(ADMIN_ID);
+        return $this->profileRepository->show(ADMIN_ID, 'user_id');
     }
 
     public function editProfile($email, $array) {

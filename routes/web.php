@@ -41,4 +41,11 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
 
     Route::get('/products', 'Admin\ProductController@index')->name('admin.products');
     Route::get('/add-product', 'Admin\ProductController@addProduct')->name('admin.products');
+
+    Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
+    ->name('ckfinder_connector');
+    Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
+    ->name('ckfinder_browser');
+
 });
+//ckfinder

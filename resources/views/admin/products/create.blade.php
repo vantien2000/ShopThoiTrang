@@ -12,36 +12,70 @@
                         <div class="card-body">
                             <form action="" method="GET">
                                 @csrf
-                                <h3 class="mb-3">Thêm sản phẩm</h3>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h3>Thêm sản phẩm</h3>
+                                    <div class="btn-form">
+                                        <a class="btn btn-primary submit w-10">Back</a>
+                                        <button class="btn btn-primary submit w-10">Cencer</button>
+                                        <button class="btn btn-primary submit w-10">Filter</button>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="category_name">Tên sản phẩm</label>
-                                            <input type="text" class="form-control" name="category_name" placeholder="Keyword">
+                                            <label for="product_name">Tên sản phẩm (<span class="text-danger">*</span>)</label>
+                                            <input type="text" class="form-control" name="product_name" value="{{ old('product_name') }}" placeholder="Tên sản phẩm">
                                         </div>
-                                        <div class="form-group m-0 d-flex justify-content-between align-items-center">
-                                            <div class="col-ms-6">
-                                                <div class="form-group d-flex align-items-center justify-content-between">
-                                                    <label class="mb-0 mr-3">Hiển thị: </label>
-                                                    <input class="m-1 d-block" name="status" checked type="radio" value="0"><span class="mx-1">Ẩn</span>
-                                                    <input class="m-1 d-block" name="status" type="radio" value="1"><span class="mx-1">Hiện</span>
-                                                </div>
+                                        <div class="form-group">
+                                            <label for="type_id">Tên Loại</label>
+                                            <select name="type_id" class="form-control">
+                                                @foreach ($types as $type)
+                                                    <option value="{{ $type->type_id }}">{{ $type->type_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 form-group">
+                                                <label for="price">Giá (<span class="text-danger">*</span>)</label>
+                                                <input type="text" value="{{ old('product_name') }}" name="price" class="form-control" placeholder="Giá sản phẩm">
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="mr-3">Sắp xếp: </label>
-                                                    <input type="checkbox" class="btn-sort-num" hidden id="sort_name" name="sort_num" value="1">
-                                                    <label for="sort_name" class="btn btn-info label-sort-num fa fa-sort-numeric-asc"></label>
-                                                    <input type="checkbox" class="btn-sort-alpha" hidden id="sort_alpha" name="sort_alpha" value="1">
-                                                    <label for="sort_alpha" class="btn btn-info label-sort-alpha fa fa-sort-alpha-asc"></label>
-                                                </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="sale">Sale (<span class="text-danger">*</span>)</label>
+                                                <input type="text" class="form-control" name="sale" placeholder="Giảm giá">
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="category_name">Mô tả</label>
+                                            <textarea name=text id="test" cols="30" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-6 form-group">
+                                                <label for="color">Màu sắc (<span class="text-danger">*</span>)</label>
+                                                <input type="text" class="form-control" name="color" placeholder="Màu sắc">
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="size">Kích thước (<span class="text-danger">*</span>)</label>
+                                                <input type="text" class="form-control" name="size" placeholder="Kích thước">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 form-group">
+                                                <label for="image">Hình ảnh (<span class="text-danger">*</span>)</label>
+                                                <input type="file" class="form-control" name="image" placeholder="Hình Ảnh" multiple>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="quantity">Số lượng</label>
+                                                <input type="text" class="form-control" name="quantity" placeholder="Số lượng">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="add_info">Thông tin thêm</label>
+                                            <textarea name="add_info" cols="30" rows="5"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
-                                <button class="btn btn-primary submit w-10">Filter</button>
                             </form>
                         </div>
                     </div>

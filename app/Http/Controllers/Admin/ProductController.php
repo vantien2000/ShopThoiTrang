@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Admin\ListService;
 use Illuminate\Http\Request;
 use Models\Products;
 
 class ProductController extends Controller
 {
     protected Products $products;
-    public function __construct(Products $products)
+    protected ListService $list;
+    public function __construct(Products $products, ListService $list)
     {
+        $this->list = $list;
         $this->products = $products;
     }
 
@@ -20,6 +23,8 @@ class ProductController extends Controller
     }
 
     public function addProduct(Request $request) {
-        return view('admin.products.create');
+        $data= [];
+        $types = $this->list->showAllType();
+        return view('admin.products.create', compact('types'));
     }
 }

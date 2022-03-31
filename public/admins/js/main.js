@@ -27,6 +27,9 @@ $(document).ready(function() {
         $('#form-type .switch-toggle').prop('checked', status);
         $('#form-type .sbm-type').text('Edit');
     });
+
+    ckeditor('test');
+    ckeditor('add_info');
 });
 
 function previewImage(file, image) {
@@ -34,4 +37,15 @@ function previewImage(file, image) {
         let image_file = this.files[0];
         image.attr('src', URL.createObjectURL(image_file));
     });
-}
+};
+
+function ckeditor(textarea) {
+    CKEDITOR.replace(textarea, {
+        filebrowserBrowseUrl     : location.origin + '/admin/ckfinder/browser',
+        filebrowserImageBrowseUrl: location.origin + '/admin/ckfinder/browser?type=Images&token=123',
+        filebrowserFlashBrowseUrl: location.origin + '/admin/ckfinder/browser?type=Images&token=123', 
+        filebrowserUploadUrl     : location.origin + '/ckfinder/connector?command=QuickUpload&type=Files', 
+        filebrowserImageUploadUrl: location.origin + '/ckfinder/connector?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl: location.origin + '/ckfinder/connector?command=QuickUpload&type=Flash',
+    });
+};

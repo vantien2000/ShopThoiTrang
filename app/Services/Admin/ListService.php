@@ -26,6 +26,10 @@ class ListService
         return $this->cateRepository->all();
     }
 
+    public function showAllType() {
+        return $this->typeRepository->all();
+    }
+
     public function showType($array) {
         return $this->typeRepository->filter($array);
     }
