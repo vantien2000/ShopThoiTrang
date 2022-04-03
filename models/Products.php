@@ -17,7 +17,6 @@ class Products extends Model
         'image',
         'sale',
         'price',
-        'color',
         'description',
         'quantity',
         'size',

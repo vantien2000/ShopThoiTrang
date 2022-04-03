@@ -71,11 +71,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-6 avatar-upload">
-                                    <div class="form-group">
+                                    <div class="form-group upload-form">
                                         <label for="exampleInputEmail1">Avatar Upload</label>
-                                        <div class="">
-                                            <img class="img-profile" src="{{ old('avatar') ? old('avatar') : asset('admins/images/profile/3.jpg') }}" alt="">
-                                        </div>
+                                        <img class="img-profile img-preview cursor-pointer" src="{{ old('avatar') ? old('avatar') : asset('admins/images/profile/3.jpg') }}" alt="">
                                         <label class="btn btn-primary mt-3" for="avatar_upload">Choose File</label>
                                         <input type="file" class="form-control d-none file-upload-avatar" name="avatar" id="avatar_upload">
                                         {!! $errors->first('avatar','<span class="d-block text-danger">:message</span>') !!}

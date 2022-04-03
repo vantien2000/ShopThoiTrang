@@ -1,0 +1,106 @@
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0px;
+    border-bottom: 1px solid rgb(197, 195, 195);
+}
+
+.header-top .header-left span,
+.header-top .header-right span {
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+.header-top .icon-header-infor {
+    margin-right: 5px;
+}
+
+.header-top .link-infor {
+    color: black;
+}
+
+.header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.navbar {
+    margin-left: -15%;
+    margin-bottom: -1%;
+}
+
+.navbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+}
+.navbar-header li {
+    padding-left: 2rem;
+}
+.navbar-header li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+}
+
+.navbar-header li a i{
+    font-size: 0.5rem;
+    padding-left: 10px;
+    color: #888
+}
+
+.navbar-header li a:hover 
+.navbar-header li a > i{
+    color: rgb(255, 220, 104) !important;
+  }
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-search-box .search-input {
+    border: none;
+    outline: none;
+    width: 250px;
+    padding: 5px 0px;
+    font-size: 16px;
+    border-bottom: 1px solid rgb(197, 195, 195);
+}
+
+.cart-header .icon-search {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    color: #817a7a;
+    cursor: pointer;
+}
+
+.cart-box {
+    position: relative;
+}
+
+.cart-box .cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    font-weight: 600;
+    font-size: 0.8rem;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+}

@@ -16,13 +16,8 @@ class CategoryController extends Controller
     }
 
     public function categoryShow(Request $request) {
-        $category_name = $request->category_name ?? '';
-        $status = $request->status ?? '';
-        $sort_num = $request->sort_num ?? '';
-        $sort_alpha = $request->sort_alpha ?? '';
-        $data = ['category_name' => $category_name, 'status' => $status, 
-        'sort_num' => $sort_num, 'sort_alpha' => $sort_alpha];
-        $categories = $this->listService->showCate($data);
+        $filter = $request->all();
+        $categories = $this->listService->showCate($filter);
         return view('admin.categories.index',compact(
             'categories',
         ));

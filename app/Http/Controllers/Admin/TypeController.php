@@ -16,14 +16,8 @@ class TypeController extends Controller
     }
 
     public function typeShow(Request $request) {
-        $type_name = $request->type_name ?? '';
-        $category_id = $request->category_id;
-        $status = $request->status ?? '';
-        $sort_num = $request->sort_num ?? '';
-        $sort_alpha = $request->sort_alpha ?? '';
-        $data = ['type_name' => $type_name, 'category_id' => $category_id, 'status' => $status, 
-        'sort_num' => $sort_num, 'sort_alpha' => $sort_alpha];
-        $types = $this->listService->showType($data);
+        $filter = $request->all();
+        $types = $this->listService->showType($filter);
         $categories = $this->listService->showAllCate();
         return view('admin.types.index', compact('types', 'categories'));
     }

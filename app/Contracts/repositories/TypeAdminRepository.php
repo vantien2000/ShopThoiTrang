@@ -16,17 +16,19 @@ class TypeAdminRepository extends AdminAbstract
         if (!empty($array['type_name'])) {
             $type->where('type_name', $array['category_name']);
         }
-        if ($array['category_id']) {
+        if (!empty($array['category_id'])) {
             $type->where('category_id', $array['category_id']);
         }
-        if ($array['sort_num'] == STATUS_ON) {
+        if (!empty($array['sort_num'])) {
             $type->orderByRaw('type_id desc');
         }
-        if ($array['sort_alpha'] == STATUS_ON) {
+        if (!empty($array['sort_alpha'])) {
             $type->orderByRaw('type_name desc');
         }
-        if ($array['status']) {
-            $type->where('status', $array['status']);
+        if (empty($array['status'])) {
+            $type->where('status', STATUS_OFF);
+        } else {
+            $type->where('status', STATUS_ON);
         }
         return $type->paginate(5);
     }

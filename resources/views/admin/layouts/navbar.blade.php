@@ -10,6 +10,12 @@
                     <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                 </a>
             </li>
+            <li class="nav-label">Users</li>
+            <li>
+                <a href="{{ route('admin.users') }}" aria-expanded="false">
+                    <i class="icon-user menu-icon"></i> <span class="nav-text">Người dùng</span>
+                </a>
+            </li>
             <li class="nav-label">Catgories And Types</li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">

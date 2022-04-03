@@ -33,19 +33,34 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::get('/delete-category/{id}', 'Admin\CategoryController@deleteCategory')->name('admin.category.delete');
     Route::get('/categories/{category_name?}/{status?}/{sort_num?}/{sort_alpha?}', 'Admin\CategoryController@categoryShow')->name('admin.categories.filter');
 
+    //types
     Route::get('/types', 'Admin\TypeController@typeShow')->name('admin.types');
     Route::post('/add-type', 'Admin\TypeController@addType')->name('admin.type.add');
     Route::post('/edit-type/{id}', 'Admin\TypeController@editType')->name('admin.type.edit');
     Route::get('/delete-type/{id}', 'Admin\TypeController@deleteType')->name('admin.type.delete');
     Route::get('/types/{category_name?}/{status?}/{sort_num?}/{sort_alpha?}', 'Admin\TypeController@typeShow')->name('admin.type.filter');
 
+    //Products
     Route::get('/products', 'Admin\ProductController@index')->name('admin.products');
-    Route::get('/add-product', 'Admin\ProductController@addProduct')->name('admin.products');
+    Route::get('/add-product', 'Admin\ProductController@showAdd')->name('admin.add.products');
+    Route::post('/create-product', 'Admin\ProductController@postAddProduct')->name('admin.add.products.post');
+    Route::get('/edit-product/{id}', 'Admin\ProductController@showEdit')->name('admin.edit.products');
+    Route::post('/update-product/{id}', 'Admin\ProductController@postEditProduct')->name('admin.edit.products.post');
+    Route::get('/delete-product/{id}', 'Admin\ProductController@deleteProduct')->name('admin.delete.products');
+    Route::get('/products/{keyword?}/{type_id?}/{status?}', 'Admin\CategoryController@index')->name('admin.products.filter');
+    Route::get('/detail-product/{id}', 'Admin\ProductController@detailProduct')->name('admin.detail.products');
 
+    //Users
+    Route::get('/users','Admin\UserController@index')->name('admin.users');
+    Route::get('/users/{keyword?}/{isActive?}', 'Admin\UserController@filter')->name('admin.users.filter');
+    Route::get('/edit-user/{id}/{isActive?}', 'Admin\UserController@editUser')->name('admin.edit.users');
+    //ckeditor
     Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
     ->name('ckfinder_connector');
     Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
     ->name('ckfinder_browser');
-
 });
-//ckfinder
+
+Route::prefix('/')->group(function () {
+    Route::get('/', 'Users\HomeController@index')->name('users.home');
+});

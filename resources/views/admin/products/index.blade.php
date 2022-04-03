@@ -10,15 +10,16 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
+                            @include('admin.products.filter')
                             <div class="table-responsive">
-                                <table class="table table-bordered verticle-middle table-types">
+                                <table class="table table-bordered verticle-middle table-products">
                                     <thead>
                                         <tr>
                                             <th scope="col">Mã sản phẩm</th>
                                             <th scope="col">Tên sản phẩm</th>
                                             <th scope="col">Ảnh</th>
-                                            <th scope="col">Giá gốc</th>
-                                            <th scope="col">Giảm giá</th>
+                                            <th scope="col">Giá gốc (VNĐ)</th>
+                                            <th scope="col">Giảm giá (%)</th>
                                             <th scope="col">Tên loại</th>
                                             <th scope="col">Hiển thị</th>
                                             <th scope="col">Chi tiết</th>
@@ -26,24 +27,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($types as $type)
+                                        @foreach ($products as $product)
                                         <tr>
-                                            <td>{{ $type->type_id }}</td>
-                                            <td>{{ $type->type_name }}</td>
-                                            <td>{{ $type->categories->category_name }}</td>
-                                            <td>
-                                                <span class="{{ $type->status == 0 ? 'fa fa-square-o' : 'fa fa-check-square-o'}} w-30"></span>
-                                            </td>
+                                            <td>{{ $product->product_id }}</td>
+                                            <td>{{ $product->product_name }}</td>
+                                            <td><img class="img-preview" src="{{ asset('userfiles/images/' . $product->image) }}" width="80" height="80" alt="product_image"></td>
+                                            <td>{{ $product->price }}</td>
+                                            <td>{{ $product->sale }}</td>
+                                            <td>{{ $product->types->type_name }}</td>
+                                            <td><span class="{{ $product->status == 0 ? 'fa fa-square-o' : 'fa fa-check-square-o'}} w-30"></span></td>
+                                            <td><a data-url="{{ route('admin.detail.products', ['id' => $product->product_id]) }}" class="detail-btn" data-toggle="tooltip" data-placement="top" title="detail"><i class="fa fa-eye color-muted m-r-5"></i> </a></td>
                                             <td><span>
-                                                <a href="javascript:void(0)" class="edit-btn" data-cate-id="{{ $type->categories->category_id }}" data-type-name="{{ $type->type_name }}" data-edit-url="{{ route('admin.type.edit',['id' => $type->type_id]) }}" 
-                                                data-status="{{ $type->status }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
-                                                <a href="javascript:void(0)" class="delete-btn" data-delete-url="{{ route('admin.type.delete',['id' => $type->type_id]) }}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
+                                                <a href="{{ route('admin.edit.products', ['id' => $product->product_id]) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+                                                <a href="javascript:void(0)" class="delete-btn" data-delete-url="{{ route('admin.delete.products', ['id' => $product->product_id]) }}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
                                             </td>
                                         </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                {{-- @include('admin.pagination.index', ['paginator' => $types]) --}}
+                                @include('admin.pagination.index', ['paginator' => $products])
                             </div>
                         </div>
                     </div>

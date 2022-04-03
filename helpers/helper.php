@@ -7,4 +7,13 @@
             return $image_webp;
         }
     }
+
+    if (!function_exists('get_name_image')) {
+        function get_name_image($image_name) {
+            //đổi đuôi file sang webp
+            $image_name_not_extention = substr($image_name, 0, strpos($image_name, '.'));
+            //format base 64
+            return $image_name_not_extention;
+        }
+    }
 ?>

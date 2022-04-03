@@ -14,16 +14,19 @@ class CategoryAdminRepository extends AdminAbstract
     public function filter($array) {
         $category = $this->modal->query();
         if (!empty($array['category_name'])) {
-            $category->where('category_name', $array['category_name']);
+            $category->where('categories.category_name', 'LIKE', '%'. $array['category_name'] .'%');
         }
-        if ($array['sort_num'] == STATUS_ON) {
+        if (!empty($array['sort_num'])) {
             $category->orderByRaw('category_id desc');
         }
-        if ($array['sort_alpha'] == STATUS_ON) {
+        if (!empty($array['sort_num'])) {
             $category->orderByRaw('category_name desc');
         }
-        if ($array['status']) {
-            $category->where('status', $array['status']);
+        if (empty($array['status'])) {
+            $category->where('status', STATUS_OFF);
+        }
+        else {
+            $category->where('status', STATUS_ON);
         }
         //pagination
         return $category->paginate(5);

@@ -1,3 +1,34 @@
+.modal,#detail-product {
+    width: 100%;
+    min-height: 100%;
+    background: rgba(191, 191, 191, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#detail-product {
+    position: absolute;z-index: 1055;
+}
+
+.modal .image-preview {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.modal img {
+    width: auto;
+    height: 500px;
+}
+
+.modal span.close-img-modal {
+    position: relative;
+    top: -250px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 .error {
     color: #F00 !important;
 }
@@ -112,4 +143,55 @@
 
 .pagination li.active a {
     color: #fff !important;
+}
+
+.text-d-none {
+    text-decoration: none !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+.detail-block {
+    position: absolute;
+    text-align: right;
+    width: 45%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+.detail-top {
+    display: flex;
+}
+.product-description {
+    text-align: justify;
+}
+.price-block {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 5px 0px;
+}
+.price, .price-old {
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+.price-old {
+    text-decoration: line-through;
+}
+.detail-infor {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.detail-infor span {
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+.close-detail-block {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 1.5rem;
+    cursor: pointer;
 }

@@ -23,7 +23,8 @@ class UserData extends Authenticatable
         'gender',
         'age',
         'address',
-        'type'
+        'type',
+        'isActive'
     ];
 
     public $timestamps = false;

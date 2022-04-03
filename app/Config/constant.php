@@ -2,9 +2,17 @@
     if (!defined("ADMIN_ID")) {
         define('ADMIN_ID', 1);
     }
+
+    if (!defined("USER_TYPE")) {
+        define('USER_TYPE', 0);
+    }
     
     if (!defined("CATEGORY_ID_KEY")) {
         define('CATEGORY_ID_KEY', 'category_id');
+    }
+
+    if (!defined("PRODUCT_ID_KEY")) {
+        define('PRODUCT_ID_KEY', 'product_id');
     }
 
     if (!defined("TYPE_ID_KEY")) {

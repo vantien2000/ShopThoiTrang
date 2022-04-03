@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    @include('admin.layouts.modal')
     <div id="main-wrapper">
         @include('admin.layouts.nav_header')
         @include('admin.layouts.header')

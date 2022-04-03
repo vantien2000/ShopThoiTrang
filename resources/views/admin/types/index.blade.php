@@ -50,6 +50,7 @@
                                 <div class="form-group">
                                     <label for="category_name">Tên danh mục</label>
                                     <select name="category_id" class="form-control">
+                                        <option value="" hidden>Tất Cả</option>
                                         @foreach ($categories as $cate)
                                             <option value="{{ $cate->category_id }}">{{ $cate->category_name }}</option>
                                         @endforeach
@@ -59,8 +60,8 @@
                                     <div class="col-ms-6">
                                         <div class="form-group d-flex align-items-center justify-content-between">
                                             <label class="mb-0 mr-3">Hiển thị: </label>
-                                            <input class="m-1 d-block" name="status" checked type="radio" value="0"><span class="mx-1">Ẩn</span>
-                                            <input class="m-1 d-block" name="status" type="radio" value="1"><span class="mx-1">Hiện</span>
+                                            <input class="m-1 d-block" name="status" {{ Request::input('status') == 0 ? 'checked' : '' }} type="radio" value="0"><span class="mx-1">Ẩn</span>
+                                            <input class="m-1 d-block" name="status" {{ Request::input('status') == 1 ? 'checked' : '' }} type="radio" value="1"><span class="mx-1">Hiện</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
