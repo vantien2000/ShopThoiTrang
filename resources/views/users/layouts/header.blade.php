@@ -16,12 +16,34 @@
         </div>
         <div class="navbar">
             <ul class="navbar-header">
-                <li><a href="">HOME <i class="fa fa-chevron-down"></i></a></li>
-                <li><a href="">NAM <i class="fa fa-chevron-down"></i></a></li>
+                <li><a href="">HOME </a></li>
+                <li>
+                    <a class="menu-active" href="">NAM <i class="fa fa-chevron-down"></i></a>
+                    <div class="menu-level">
+                        <div class="menu-category-header">
+                            <a class="text-dark f-bolder" href="http://">S</a>
+                            <a href="http://">BC</a>
+                            <a href="http://">DE</a>
+                            <a href="http://">RFG</a>
+                        </div>
+                        <div class="menu-category-header">
+                            <a class="text-dark f-bolder" href="http://">A</a>
+                            <a href="http://">B</a>
+                            <a href="http://">C</a>
+                            <a href="http://">D</a>
+                        </div>
+                        <div class="menu-category-header">
+                            <a class="cate-title" href="http://"></a>
+                            <a href="http://"></a>
+                            <a href="http://"></a>
+                            <a href="http://"></a>
+                        </div>
+                    </div>
+                </li>
                 <li><a href="">NỮ <i class="fa fa-chevron-down"></i></a></li>
                 <li><a href="">HOT <i class="fa fa-chevron-down"></i></a></li>
                 <li><a href="">NEW <i class="fa fa-chevron-down"></i></a></li>
-                <li><a href="">BLOG <i class="fa fa-chevron-down"></i></a></li>
+                <li><a href="">BLOG </a></li>
             </ul>
         </div>
         <div class="cart-header">

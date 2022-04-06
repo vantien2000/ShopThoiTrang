@@ -25,10 +25,12 @@ class TypeAdminRepository extends AdminAbstract
         if (!empty($array['sort_alpha'])) {
             $type->orderByRaw('type_name desc');
         }
-        if (empty($array['status'])) {
-            $type->where('status', STATUS_OFF);
-        } else {
-            $type->where('status', STATUS_ON);
+        if (isset($array['status'])) {
+            if (empty($array['status'])) {
+                $type->where('status', STATUS_OFF);
+            } else {
+                $type->where('status', STATUS_ON);
+            }
         }
         return $type->paginate(5);
     }

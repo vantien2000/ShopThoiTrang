@@ -13,61 +13,61 @@
 </head>
 
 <body>
-
     <div class="main-container">
         @include('users.layouts.header')
         <div class="main-wrapper">
             @include('users.layouts.banner')
             <div class="container">
-                <div class="top">
-                    <nav class="navbar navbar-expand-lg d-flex justify-content-center m-auto">
-                        <ul class="navbar-nav top-navbar">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">NEW </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">SALE</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">TOP RATE</a>
-                            </li>
+                @include('users.home.top')
+                @include('users.home.middle')
+                @include('users.home.rule')
+                @include('users.home.recomend')
+            </div>
+        </div>
+        @include('users.home.shop_image')
+        <div class="footer">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="shop-information d-flex">
+                        <ul class="nav d-block nav-info-shop">
+                            <li class="nav-title f-bolder">THÔNG TIN CÔNG TY</li>
+                            <li class="nav-link"><a href="">Giới thiệu Shop</a></li>
+                            <li class="nav-link"><a href="">Chương trình</a></li>
+                            <li class="nav-link"><a href="">Blog Thời trang</a></li>
                         </ul>
-                    </nav>
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <a href="">
-                                <img src="https://cf.shopee.vn/file/008d7e1f9a3d39ae9d6a7cc09a6c3233" width="200" height="250" alt="">
-                            </a>
-                            <p class="m-0">Product Name</p>
-                            <div class=""><span>100000 <sup>vnđ</sup></span> <span>120000 <sup>vnđ</sup></span></div>
-                        </div>
-                        <div class="product">
-                            <a href="">
-                                <img src="https://cf.shopee.vn/file/008d7e1f9a3d39ae9d6a7cc09a6c3233" width="200" height="250" alt="">
-                            </a>
-                            <p class="m-0">Product Name</p>
-                            <div class=""><span>100000 <sup>vnđ</sup></span> <span>120000 <sup>vnđ</sup></span></div>
-                        </div>
-                        <div class="product">
-                            <a href="">
-                                <img src="https://cf.shopee.vn/file/008d7e1f9a3d39ae9d6a7cc09a6c3233" width="200" height="250" alt="">
-                            </a>
-                            <p class="m-0">Product Name</p>
-                            <div class=""><span>100000 <sup>vnđ</sup></span> <span>120000 <sup>vnđ</sup></span></div>
-                        </div>
-                        <div class="product">
-                            <a href="">
-                                <img src="https://cf.shopee.vn/file/008d7e1f9a3d39ae9d6a7cc09a6c3233" width="200" height="250" alt="">
-                            </a>
-                            <p class="m-0">Product Name</p>
-                            <div class=""><span>100000 <sup>vnđ</sup></span> <span>120000 <sup>vnđ</sup></span></div>
-                        </div>
-                        <div class="product">
-                            <a href="">
-                                <img src="https://cf.shopee.vn/file/008d7e1f9a3d39ae9d6a7cc09a6c3233" width="200" height="250" alt="">
-                            </a>
-                            <p class="m-0">Product Name</p>
-                            <div class=""><span>100000 <sup>vnđ</sup></span> <span>120000 <sup>vnđ</sup></span></div>
+                        <ul class="nav d-block nav-info-shop">
+                            <li class="nav-title f-bolder">THÔNG TIN CÔNG TY</li>
+                            <li class="nav-link"><a href="">Giới thiệu Shop</a></li>
+                            <li class="nav-link"><a href="">Chương trình</a></li>
+                            <li class="nav-link"><a href="">Blog Thời trang</a></li>
+                        </ul>
+                        <ul class="nav d-block nav-info-shop">
+                            <li class="nav-title f-bolder">THÔNG TIN CÔNG TY</li>
+                            <li class="nav-link"><a href="">Giới thiệu Shop</a></li>
+                            <li class="nav-link"><a href="">Chương trình</a></li>
+                            <li class="nav-link"><a href="">Blog Thời trang</a></li>
+                        </ul>
+                    </div>
+                    <div class="address-shop">
+                        <p><b>Địa chỉ:</b> Số 298 Đ. Cầu Diễn, Minh Khai, Bắc Từ Liêm, Hà Nội</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="connect-shop">
+                        <div class="connect-title f-bolder">KẾT NỐI VỚI CHÚNG TÔI</div>
+                        <ul class="nav">
+                            <li class="nav-link"><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li class="nav-link"><a href=""><i class="fa fa-instagram"></i></a></li>
+                            <li class="nav-link"><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li class="nav-link"><a href=""><i class="fa fa-youtube-play"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="connect-shop">
+                        <div class="connect-title f-bolder">ĐĂNG KÝ NHẬN THÔNG TIN</div>
+                        <div class="contact-form">
+                            <form action="">
+                                <input type="email" placeholder="Email"><button>Đăng Ký</button>
+                            </form>
                         </div>
                     </div>
                 </div>

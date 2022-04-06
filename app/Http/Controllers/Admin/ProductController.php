@@ -43,7 +43,7 @@ class ProductController extends Controller
     public function postAddProduct(ProductRequest $request) {
         $data = $request->all();
         $image_name = $request->image . '.webp';
-        convert_image_webp($request->file('image_upload'), 150, 150)->save(public_path() . '/userfiles/images/' . $image_name);
+        convert_image_webp($request->file('image_upload'), 250, 300)->save(public_path() . '/userfiles/images/products/' . $image_name);
         $data['image'] = $image_name;
         $this->productsService->storeProduct($data);
         return redirect()->route('admin.products');

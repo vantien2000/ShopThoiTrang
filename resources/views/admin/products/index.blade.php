@@ -31,7 +31,7 @@
                                         <tr>
                                             <td>{{ $product->product_id }}</td>
                                             <td>{{ $product->product_name }}</td>
-                                            <td><img class="img-preview" src="{{ asset('userfiles/images/' . $product->image) }}" width="80" height="80" alt="product_image"></td>
+                                            <td><img class="img-preview" src="{{ asset('userfiles/images/products/' . $product->image) }}" width="80" height="80" alt="product_image"></td>
                                             <td>{{ $product->price }}</td>
                                             <td>{{ $product->sale }}</td>
                                             <td>{{ $product->types->type_name }}</td>

@@ -22,11 +22,13 @@ class CategoryAdminRepository extends AdminAbstract
         if (!empty($array['sort_num'])) {
             $category->orderByRaw('category_name desc');
         }
-        if (empty($array['status'])) {
-            $category->where('status', STATUS_OFF);
-        }
-        else {
-            $category->where('status', STATUS_ON);
+        if (isset($array['status'])) {
+            if (empty($array['status'])) {
+                $category->where('status', STATUS_OFF);
+            }
+            else {
+                $category->where('status', STATUS_ON);
+            }
         }
         //pagination
         return $category->paginate(5);

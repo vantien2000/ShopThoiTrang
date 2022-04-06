@@ -24,7 +24,6 @@ class ProductAdminRepository extends AdminAbstract
             if ($filter['status'] == 0) { $product->where('products.status', STATUS_OFF); }
             else { $product->where('products.status', STATUS_ON); }
         }
-
         if (!empty($filter['size']) && in_array(config('setup.size'),array($filter['size']), true)) {
             $product->where('size', $filter['size']);
         }
