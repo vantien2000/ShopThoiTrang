@@ -17,8 +17,20 @@
         <div class="navbar">
             <ul class="navbar-header">
                 <li><a href="">HOME </a></li>
-                <li>
-                    <a class="menu-active" href="">NAM <i class="fa fa-chevron-down"></i></a>
+                <li class="menu-active">
+                    <a href="">NAM <i class="fa fa-chevron-down"></i></a>
+                    <div class="menu-level">
+                        @foreach ($categories as $category)
+                            <div class="menu-category-header">
+                                <a class="text-dark f-bolder" href="http://">{{ $category->category_name }}</a>
+                                @foreach ($category->types as $type)
+                                    <a href="http://">{{ $type->type_name }}</a>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                </li>
+                <li><a href="">NỮ <i class="fa fa-chevron-down"></i></a>
                     <div class="menu-level">
                         <div class="menu-category-header">
                             <a class="text-dark f-bolder" href="http://">S</a>
@@ -40,7 +52,6 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="">NỮ <i class="fa fa-chevron-down"></i></a></li>
                 <li><a href="">HOT <i class="fa fa-chevron-down"></i></a></li>
                 <li><a href="">NEW <i class="fa fa-chevron-down"></i></a></li>
                 <li><a href="">BLOG </a></li>

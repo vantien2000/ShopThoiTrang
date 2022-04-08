@@ -67,11 +67,11 @@ $(document).ready(function() {
           url: $(this).data('url'),
           success: function(res) {
             let price_old = res.price * (1- res.sale/100);
-            $('.product_image').attr('src', location.origin + '/userfiles/images/' + res.image);
+            $('.product_image').attr('src', location.origin + '/userfiles/images/products/' + res.image);
             $('.product-name').text(res.product_name);
             $('.product-description').html(res.description);
-            $('.price').text(res.price);
-            $('.price_old').text(price_old);
+            $('.price').text(price_old);
+            $('.price-old').text(res.price);
             $('.size').text(res.size);
             $('.quantity').text(res.quantity);
             $('.add-infor-product').html(res.add_infor);

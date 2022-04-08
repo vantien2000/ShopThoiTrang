@@ -16,4 +16,10 @@
             return $image_name_not_extention;
         }
     }
+
+    if (!function_exists('price_sale')) {
+        function price_sale($price, $sale) {
+            return $price*(1 - $sale/100);
+        }
+    }
 ?>

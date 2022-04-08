@@ -18,6 +18,10 @@ class ListService
         $this->typeRepository = $typeRepository;
     }
 
+    public function showCateUser() {
+        return $this->cateRepository->showCateUser();
+    }
+
     public function showCate($array) {
         return $this->cateRepository->filter($array);
     }

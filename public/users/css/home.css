@@ -40,7 +40,7 @@
 }
 
 .navbar-header li {
-    padding-left: 2rem;
+    margin-left: 2rem;
 }
 
 .navbar-header li a {
@@ -51,42 +51,41 @@
     font-weight: 600;
     color: black;
 }
-
 .navbar-header li a i {
     font-size: 0.5rem;
     padding-left: 10px;
     color: #888
 }
-
 .navbar-header > li > .menu-level {
+    width: 400px;
+    flex-wrap: wrap;
     position: absolute;
     display: none;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     padding: 1rem;
     z-index: 3;
     background-color: #fff;
 }
 
 .navbar-header > li > .menu-level > .menu-category-header {
+    min-width: 100px;
     padding-right: 1rem;
 }
-
 .navbar-header > li > .menu-level > .menu-category-header > a {
+    justify-content: left !important;
     font-size: 0.8rem;
     color: #817a7a;
+    padding: 5px;
 }
-
-.navbar-header li a:hover .navbar-header li a>i {
+.navbar-header li a:hover {
     color: rgb(255, 220, 104) !important;
 }
-
 .cart-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .form-search-box .search-input {
     border: none;
     outline: none;
@@ -95,7 +94,6 @@
     font-size: 16px;
     border-bottom: 1px solid rgb(197, 195, 195);
 }
-
 .cart-header .icon-search {
     border: none;
     background: none;
@@ -103,11 +101,9 @@
     color: #817a7a;
     cursor: pointer;
 }
-
 .cart-box {
     position: relative;
 }
-
 .cart-box .cart-count {
     position: absolute;
     top: 0;
@@ -124,36 +120,30 @@
     border-radius: 50%;
     text-align: center;
 }
-
 .top {
     margin-top: 10px;
 }
-
 .top-navbar li {
     padding-right: 10px;
     margin-bottom: 10px;
 }
-
 .top-navbar li a {
     font-size: 2rem;
     font-weight: bold;
     color: #888;
     border-bottom: 1px solid black;
 }
-
 .product-wrapper {
     display: flex;
     justify-content: space-between;
     margin: 15px auto;
     width: 100%;
 }
-
 .product {
     position: relative;
     text-align: center;
     overflow: hidden;
 }
-
 .product .star-ratings {
     width: 100px;
     unicode-bidi: bidi-override;
@@ -163,7 +153,6 @@
     margin: 0 auto;
     padding: 0;
 }
-
 .product .fill-ratings {
     width: 100px;
     color: #e7711b;
@@ -176,40 +165,32 @@
     overflow: hidden;
     margin: 0 auto;
 }
-
 .product .fill-ratings span {
     display: inline-block;
 }
-
 .product .empty-ratings {
     padding: 0;
     display: block;
     z-index: 0;
 }
-
 .product p {
     font-size: 0.8rem;
 }
-
 .product .price {
     font-size: 1rem;
     font-weight: 600;
     margin: 2px 0px;
 }
-
 .product .price .new_price {
     margin: 5px;
 }
-
 .product .price .old_price {
     color: red;
     text-decoration: line-through;
 }
-
 .btn-product {
     display: none;
 }
-
 .btn-product a {
     display: flex;
     justify-content: center;
@@ -220,7 +201,6 @@
     height: 30px;
     font-size: 0.8rem;
 }
-
 .btn-product a > i {
     margin-right: 5px;
 }
@@ -230,7 +210,6 @@
     color: #fff;
     transition:all 0.3s ease-in;
 }
-
 .product:hover .btn-product {
     position: absolute;
     bottom: 0;
@@ -301,7 +280,6 @@
     text-align: center;
     padding: 1.5rem !important;
 }
-
 .rule-shipping li .rule-ship h6 {
     text-align: center;
     margin: 5px 0px;
@@ -313,15 +291,14 @@
 .shop-image .image-shop>li>img {
     width: 100%;
 }
-
-.shop-image .image-shop>li {
+.shop-image .image-shop > li {
     position:relative;
     display:block;
     width:100%;
     height:100%;
     overflow:hidden;
 }
-.shop-image .image-shop>li:before {
+.shop-image .image-shop > li:before {
     border-color:#000 transparent transparent;
     border-style:solid;
     border-width:0;
@@ -333,7 +310,7 @@
     top:0;transition:all 0.5s ease-in-out;
     width:0;
 }
-.shop-image .image-shop>li:after {
+.shop-image .image-shop > li:after {
     border-color:transparent transparent #000;
     border-style:solid;
     border-width:0;
@@ -356,28 +333,23 @@
     transition:all 0.3s ease-in-out;
     z-index:1;
 }
-
 .footer {
     padding-top: 60px;
     padding-bottom: 20px;
     background-color: #fafafa;
     margin-top: 3rem
 }
-
 .footer .shop-information {
     margin-left: 1rem;
 }
-
 .footer .shop-information .nav-info-shop {
     font-size: 0.8rem;
     margin: 0px 1rem;
 }
-
 .footer .shop-information > .nav-info-shop > li {
     text-align: left;
     padding: 2px 0px !important;
 }
-
 .footer .shop-information > .nav-info-shop > li > a {
     text-decoration: none;
     color: #222;

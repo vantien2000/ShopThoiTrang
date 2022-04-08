@@ -5,8 +5,8 @@
                 <img class="product_image" width="200" height="200" alt="Product_image">
             </div>
             <div class="detail-right text-left ml-3">
-                <h3 class="product-name">Product Name</h3>
-                <div class="product-description">
+                <h3 class="product-name word-break">Product Name</h3>
+                <div class="product-description word-break">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veniam tempora consequuntur, exercitationem repudiandae doloribus repellat nostrum eaque id magnam officiis molestiae. Quia, eaque? Voluptatibus veritatis id alias. Harum, quasi.
                 </div>
                 <div class="price-block">Giá: <span class="price">100000<sup>vnđ</sup></span> / <span class="text-danger price-old">120000 <sup>vnđ</sup></span></div>

@@ -101,3 +101,7 @@ a:hover {
 .bg-sale {
   background-color: rgb(250, 112, 94);
 }
+
+.navbar-header li:hover .menu-level {
+  display: flex;
+}

@@ -33,4 +33,8 @@ class CategoryAdminRepository extends AdminAbstract
         //pagination
         return $category->paginate(5);
     }
+
+    public function showCateUser() {
+        return $this->modal->where('status', STATUS_ON)->get();
+    }
 }
