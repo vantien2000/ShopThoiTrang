@@ -1,0 +1,12 @@
+.login-form .form-group label {
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.login-form .form-group input {
+    height: 45px;
+    outline: none !important;
+    border: none !important;
+    border-bottom: 1px solid #ccc !important;
+    border-radius: 0px;
+}

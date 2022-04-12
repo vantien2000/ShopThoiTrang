@@ -1,0 +1,25 @@
+.register-form .form-group label {
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.register-form .form-group input {
+    height: 40px;
+    outline: none !important;
+    border: none !important;
+    border-bottom: 1px solid #ccc !important;
+    border-radius: 0px;
+}
+
+.register-form input[type="radio"] {
+    height: 12px;
+}
+
+.register-right {
+    padding: 1rem;
+}
+
+.btn-register {
+    width: 60% !important;
+    margin-right: 2rem;
+}

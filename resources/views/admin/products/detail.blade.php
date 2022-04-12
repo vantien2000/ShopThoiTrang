@@ -2,7 +2,7 @@
     <div class="detail-block" >
         <div class="detail-top">
             <div class="detail-left">
-                <img class="product_image" width="200" height="200" alt="Product_image">
+                <img id="image_zoom" class="product_image" width="200" height="200" alt="Product_image">
             </div>
             <div class="detail-right text-left ml-3">
                 <h3 class="product-name word-break">Product Name</h3>

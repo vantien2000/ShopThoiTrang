@@ -20,6 +20,17 @@
     color: black;
 }
 
+.header-top .img-avatar > img {
+    margin-left: 5px;
+    border-radius: 50%;
+}
+
+.header-top .menu-profile {
+    margin-top: 10px;
+    margin-right: 100px;
+    padding: 0;
+}
+
 .header-bottom {
     display: flex;
     justify-content: space-between;
@@ -64,7 +75,7 @@
     justify-content: space-between;
     align-items: start;
     padding: 1rem;
-    z-index: 3;
+    z-index: 1000;
     background-color: #fff;
 }
 

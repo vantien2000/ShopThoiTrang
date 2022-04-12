@@ -5,9 +5,19 @@
             <span class="ml-1"><i class="fa fa-mobile icon-header-infor"></i>PHONE: <a class="link-infor" href="">+0377528370</a></span>
         </div>
         <div class="header-right">
-            <span><a class="link-infor mr-2" href="">About Us</a></span>
-            <span><a class="link-infor mr-2" href="">Contact</a></span>
-            <span><i class="fa fa-user-o icon-header-infor"></i><a class="link-infor" href="">Login</a></span>
+            @if (Auth::check())
+                <span>Xin chào {{ Auth::user()->user_name }}&nbsp;</span>
+                <a class="img-avatar dropdown" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <img src="{{ asset('/userfiles/images/users/' . Auth::user()->avatar) }}" width="30px" height="30px" alt="avatar">
+                </a>
+                <div class="dropdown-menu menu-profile" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+                  <a class="dropdown-item" href="#">Đơn hàng</a>
+                  <a class="dropdown-item" href="{{ route('users.logout') }}">Đăng xuất</a>
+                </div>
+            @else
+            <span><i class="fa fa-user-o icon-header-infor"></i><a class="link-infor" href="{{ route('users.login') }}">LOGIN</a></span>
+            @endif
         </div>
     </div>
     <div class="header-bottom">
@@ -16,7 +26,7 @@
         </div>
         <div class="navbar">
             <ul class="navbar-header">
-                <li><a href="">HOME </a></li>
+                <li><a href="{{ route('users.home') }}">HOME </a></li>
                 <li class="menu-active">
                     <a href="">NAM <i class="fa fa-chevron-down"></i></a>
                     <div class="menu-level">
@@ -52,8 +62,8 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="">HOT <i class="fa fa-chevron-down"></i></a></li>
-                <li><a href="">NEW <i class="fa fa-chevron-down"></i></a></li>
+                <li><a href="">ABOUT US</a></li>
+                <li><a href="">CONTACT</a></li>
                 <li><a href="">BLOG </a></li>
             </ul>
         </div>

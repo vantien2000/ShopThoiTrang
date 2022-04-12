@@ -277,3 +277,4 @@ ALTER TABLE types ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1:show';
 ALTER TABLE categories ADD UNIQUE (`category_name`);
 ALTER TABLE products ADD status tinyint(1) DEFAULT 0 COMMENT '0: hide 1: show';
 ALTER TABLE user_data ADD isActive tinyint(1) DEFAULT 1 COMMENT '0: Khóa 1: Hoạt động';
+ALTER TABLE categories ADD category_type tinyint(1) DEFAULT 0 COMMENT '0 Nữ 1: Nam';

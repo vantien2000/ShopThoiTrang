@@ -1,0 +1,178 @@
+.page-to-page {
+    margin-left: 1.5rem;
+}
+.page-to-page li , li > a{
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #111;
+}
+
+.detail-product {
+    margin: 1.5rem auto;
+}
+
+.page-to-page .link {
+    border-left: 1px solid #ccc;
+}
+.detail-right {
+    width: 525px;
+}
+.detail-right .product-name {
+    font-size: 1.2rem;
+    margin: 3px 0px;
+}
+
+.detail-right .product-rate, .customer-rate {
+    position: relative;
+}
+.star-ratings {
+    width: 100px;
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 24px;
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+}
+.fill-ratings {
+    width: 100px;
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.fill-ratings span {
+    display: inline-block;
+}
+.empty-ratings {
+    padding: 0;
+    display: block;
+    z-index: 0;
+}
+.detail-right .description, .additional-information {
+    margin: 5px 0px;
+    text-align: justify;
+    font-weight: 400;
+    word-break: break-all;
+    width: 80%;
+}
+.detail-right .new_price {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: rgb(250, 148, 31);
+    margin-right: 10px;
+}
+.detail-right .old_price {
+    text-decoration: line-through;
+}
+.detail-right .sale {
+    color: #e74d31;
+}
+
+.detail-right .sale .product-sale {
+    background-color: #e74d31;
+    padding: 5px;
+    color: #fff;
+    margin: 0px 5px;
+}
+.detail-right .size-element {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+.detail-right .size-element label {
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.detail-right .size-element input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    display: none;
+    cursor: pointer;
+}
+.detail-right .size-element .active {
+    background-color: #e7711b;
+    color: #fff;
+}
+.detail-right .size-element label:hover {
+    background-color: #e7711b;
+    color: #fff;
+}
+.detail-right .quantity-product {
+    margin: 5px 10px;
+    padding-left: 5px;
+    width: 50px;
+}
+.detail-right .add-to-cart button {
+    height: 50px;
+    width: 80%;
+    margin-top: 10px;
+}
+.detail-right .add-information i {
+    margin-right: 6.5rem;
+    cursor: pointer;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.rating-container img {
+    border-radius: 50%;
+}
+
+.form-rating textarea {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+.rating-list {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    height: 300px;
+    overflow-y: auto;
+}

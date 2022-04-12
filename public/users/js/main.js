@@ -26,3 +26,13 @@ function slideShowPrev(index) {
     slides.eq(index).removeClass('d-none');
     slides.eq(index+3).addClass('d-none');
 }
+
+$(document).ready(function() {
+    $('.sizes').on('click', '.size-element input', function(e) {
+        $('.size-element label').removeClass('active');
+        if ($('.size-element input').is(':checked')) {
+            val = $(this).val();
+            $('.size-element .size-'+val).addClass('active');
+        }
+    });
+});

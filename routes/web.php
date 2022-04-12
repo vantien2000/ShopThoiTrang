@@ -63,4 +63,10 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::get('/', 'Users\HomeController@index')->name('users.home');
+    Route::get('/login', 'Users\LoginController@login')->name('users.login');
+    Route::get('/logout', 'Users\LoginController@logout')->name('users.logout');
+    Route::get('/register', 'Users\LoginController@register')->name('users.register');
+    Route::get('/product/{id}', 'Users\ProductController@index')->name('users.detail');
+    Route::post('/postLogin', 'Users\LoginController@postLogin')->name('users.post.login');
+    Route::post('/postRegister', 'Users\LoginController@postRegister')->name('users.post.register');
 });

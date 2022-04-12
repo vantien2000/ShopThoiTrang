@@ -3,6 +3,7 @@
 namespace Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Type;
 
 class Categories extends Model
 {

@@ -17,7 +17,7 @@ class LoginController extends Controller
     {
         $email = $request->email;
         $password = $request->password;
-        $isLogin = Auth::attempt(['email' => $email, 'password' => $password]);
+        $isLogin = Auth::attempt(['email' => $email, 'password' => $password, 'type' => STATUS_ON]);
         if ($isLogin) {
             return redirect()->route('admin.home');
         }
