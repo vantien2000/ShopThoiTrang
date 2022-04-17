@@ -1,10 +1,10 @@
 <?php
 namespace App\Contracts\Repositories;
 
-use App\Contracts\AdminAbstract;
+use App\Contracts\RepositoryAbstract;
 use Models\UserData;
 
-class ProfileAdminRepository extends AdminAbstract
+class ProfileRepository extends RepositoryAbstract
 {
     public function __construct(UserData $userData)
     {

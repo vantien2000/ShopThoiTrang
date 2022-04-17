@@ -1,11 +1,11 @@
 <?php
 namespace App\Contracts\Repositories;
 
-use App\Contracts\AdminAbstract;
+use App\Contracts\RepositoryAbstract;
 use Illuminate\Support\Facades\DB;
 use Models\UserData;
 
-class UserAdminRepository extends AdminAbstract
+class UserRepository extends RepositoryAbstract
 {
     public function __construct(UserData $user)
     {

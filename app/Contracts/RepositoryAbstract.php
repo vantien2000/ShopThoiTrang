@@ -1,9 +1,9 @@
 <?php
 namespace App\Contracts;
 
-use App\Contracts\AdminInterface as ContractsAdminInterface;
+use App\Contracts\RepositoryInterface;
 
-abstract class AdminAbstract implements ContractsAdminInterface
+abstract class RepositoryAbstract implements RepositoryInterface
 {
     protected $modal;
 

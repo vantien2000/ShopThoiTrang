@@ -1,10 +1,10 @@
 <?php
 namespace App\Contracts\Repositories;
 
-use App\Contracts\AdminAbstract;
+use App\Contracts\RepositoryAbstract;
 use Models\Types;
 
-class TypeAdminRepository extends AdminAbstract
+class TypeRepository extends RepositoryAbstract
 {
     public function __construct(Types $type)
     {

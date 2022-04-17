@@ -22,15 +22,15 @@
     </div>
     <div class="header-bottom">
         <div class="logo-header">
-            <a href=""><img src="https://incucdep.com/wp-content/uploads/2014/12/logo-thoi-trang.jpg" width="100" alt=""></a>
+            <a href=""><img src="{{ asset('/users/images/header/logo.jpg') }}" width="100" alt=""></a>
         </div>
         <div class="navbar">
             <ul class="navbar-header">
                 <li><a href="{{ route('users.home') }}">HOME </a></li>
                 <li class="menu-active">
-                    <a href="">NAM <i class="fa fa-chevron-down"></i></a>
+                    <a href="">{{ config('setup.cates')[0] }}<i class="fa fa-chevron-down"></i></a>
                     <div class="menu-level">
-                        @foreach ($categories as $category)
+                        @foreach ($categories_male as $category)
                             <div class="menu-category-header">
                                 <a class="text-dark f-bolder" href="http://">{{ $category->category_name }}</a>
                                 @foreach ($category->types as $type)
@@ -40,26 +40,17 @@
                         @endforeach
                     </div>
                 </li>
-                <li><a href="">NỮ <i class="fa fa-chevron-down"></i></a>
+                <li class="menu-active">
+                    <a href="">{{ config('setup.cates')[1] }}<i class="fa fa-chevron-down"></i></a>
                     <div class="menu-level">
-                        <div class="menu-category-header">
-                            <a class="text-dark f-bolder" href="http://">S</a>
-                            <a href="http://">BC</a>
-                            <a href="http://">DE</a>
-                            <a href="http://">RFG</a>
-                        </div>
-                        <div class="menu-category-header">
-                            <a class="text-dark f-bolder" href="http://">A</a>
-                            <a href="http://">B</a>
-                            <a href="http://">C</a>
-                            <a href="http://">D</a>
-                        </div>
-                        <div class="menu-category-header">
-                            <a class="cate-title" href="http://"></a>
-                            <a href="http://"></a>
-                            <a href="http://"></a>
-                            <a href="http://"></a>
-                        </div>
+                        @foreach ($categories_female as $category)
+                            <div class="menu-category-header">
+                                <a class="text-dark f-bolder" href="http://">{{ $category->category_name }}</a>
+                                @foreach ($category->types as $type)
+                                    <a href="http://">{{ $type->type_name }}</a>
+                                @endforeach
+                            </div>
+                        @endforeach
                     </div>
                 </li>
                 <li><a href="">ABOUT US</a></li>
@@ -75,9 +66,9 @@
                 </form>
             </div>
             <div class="cart-box">
-                <a href=""><img src="https://media.istockphoto.com/vectors/shopping-cart-icon-shopping-cart-illustration-for-web-mobile-apps-vector-id1225957022?k=20&m=1225957022&s=170667a&w=0&h=DKKbXdb2DfEQl3OWmIcBk0a-OHQw0rWBhSCQ-qzE_uw=" width="50" alt=""></a>
-                <span class="cart-count">2</span>
-            </div>
+                <a href="{{ route('users.cart') }}"><img src="{{ asset('/users/images/header/cart_icon.jpg') }}" width="50" alt=""></a>
+                <span class="cart-count">{{ session('carts') ? count(session('carts')) : 0 }}</span>
+            </div>  
         </div>
     </div>
 </div>

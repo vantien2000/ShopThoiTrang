@@ -18,11 +18,22 @@
                                     <input name="category_name" value="{{ old('category_name') }}" id="category_name" class="form-control" type="text" placeholder="Tên Danh Mục">
                                     {!! $errors->first('category_name','<span class="text-danger">:message</span>') !!}
                                 </div>
-                                <div class="form-group">
-                                    <label>Hiển thị</label>
-                                    <input class="switch-toggle" name="status" id="status" type="checkbox" value="1">
-                                    <label class="switch-btn" for="status"></label>
-                                    {!! $errors->first('mgs','<span class="text-danger">' . $errors->first('mgs') . '</span>') !!}
+                                <div class="row">
+                                    <div class="col-sm-8 form-group">
+                                        <label for="category_type">Loại Danh Mục</label>
+                                        <select name="category_type" class="form-control" id="category_type">
+                                            @foreach (config('setup.cates') as $key => $cate_name)
+                                                <option value="{{ $key }}">{{ $cate_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        {!! $errors->first('mgs','<span class="text-danger">' . $errors->first('mgs') . '</span>') !!}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        <label>Hiển thị</label>
+                                        <input class="switch-toggle" name="status" id="status" type="checkbox" value="1">
+                                        <label class="switch-btn" for="status"></label>
+                                        {!! $errors->first('mgs','<span class="text-danger">' . $errors->first('mgs') . '</span>') !!}
+                                    </div>
                                 </div>
                                 <button class="btn sbm-cate btn-primary submit w-10">Add</button>
                             </form>
@@ -71,6 +82,7 @@
                                         <tr>
                                             <th scope="col">Mã danh mục</th>
                                             <th scope="col">Tên Danh Mục</th>
+                                            <th scope="col">Loại danh mục</th>
                                             <th scope="col">Hiển thị</th>
                                             <th scope="col">Hành động</th>
                                         </tr>
@@ -80,6 +92,9 @@
                                         <tr>
                                             <td>{{ $cate->category_id }}</td>
                                             <td>{{ $cate->category_name }}</td>
+                                            <td>
+                                                {{ config('setup.cates')[$cate->category_type] }}
+                                            </td>
                                             <td>
                                                 <span class="{{ $cate->status == 0 ? 'fa fa-square-o' : 'fa fa-check-square-o'}} w-30"></span>
                                             </td>

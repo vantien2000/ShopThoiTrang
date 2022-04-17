@@ -1,11 +1,11 @@
 @extends('users.accounts.master')
 @section('content')
 <div class="main-wrapper register-page rounded shadown-sm">
-    <div class="row">
-        <div class="col-lg-6 m-0 p-0 register-left">
+    <div class="row d-flex align-items-center">
+        <div class="col-lg-5 m-0 p-0 register-left">
             <img src="https://top10tphcm.com/wp-content/uploads/2018/11/hightway-store-Copy-1.jpg" width="100%" height="600px" alt="" class="img-shop d-block">
         </div>
-        <div class="col-lg-6 register-right">
+        <div class="col-lg-7 register-right">
             <h3 class="title">ĐĂNG KÝ THÀNH VIÊN</h3>
             <form id="register_form_users" action="{{ route('users.post.register') }}" class="register-form mt-4" method="POST">
                 @csrf
@@ -55,6 +55,7 @@
                         <label for="confirm">Nhập Lại Mật khẩu</label>
                         <input type="password" name="confirm" class="form-control" id="confirm" placeholder="Nhập lại mật khẩu">
                         {!! $errors->first('confirm','<span class="d-block text-danger">:message</span>') !!}
+                        {!! $errors->first('mgs','<span class="d-block text-danger">:message</span>') !!}
                     </div>
                 </div>
                 <div class="btn-form text-center mt-4">

@@ -14,7 +14,8 @@ class Categories extends Model
     protected $fillable = [
         'category_id',
         'category_name',
-        'status'
+        'status',
+        'category_type'
     ];
 
     public $timestamps = false;

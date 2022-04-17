@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0px;
+    padding: 8px 1rem;
     border-bottom: 1px solid rgb(197, 195, 195);
 }
 
@@ -35,7 +35,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0px 1rem 1rem;
 }
 
 .navbar {
@@ -61,6 +61,7 @@
     font-size: 1rem;
     font-weight: 600;
     color: black;
+    text-transform: uppercase;
 }
 .navbar-header li a i {
     font-size: 0.5rem;
@@ -148,12 +149,13 @@
     display: flex;
     justify-content: space-between;
     margin: 15px auto;
-    width: 100%;
+    width: 90%;
 }
 .product {
     position: relative;
     text-align: center;
     overflow: hidden;
+    margin: 0px 8px;
 }
 .product .star-ratings {
     width: 100px;
@@ -175,6 +177,7 @@
     left: 0;
     overflow: hidden;
     margin: 0 auto;
+    height: 36px;
 }
 .product .fill-ratings span {
     display: inline-block;
@@ -186,6 +189,7 @@
 }
 .product p {
     font-size: 0.8rem;
+    word-break: break-all;
 }
 .product .price {
     font-size: 1rem;
@@ -221,6 +225,21 @@
     color: #fff;
     transition:all 0.3s ease-in;
 }
+.btn-slider {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+.btn-slider .btn-prev-middle, .btn-next-middle {
+    display: block;
+    width: 100px;
+    padding: 5px 10px;
+    border: 1px solid #e7711b;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #e7711b;
+
+}
 .product:hover .btn-product {
     position: absolute;
     bottom: 0;
@@ -233,7 +252,7 @@
     opacity: 0.8;
 }
 .middle {
-    width: 95%;
+    width: 90%;
     display: flex;
     margin: 3rem auto !important;
 }
@@ -248,7 +267,7 @@
     display: flex;
     flex-direction: column;
     margin-left: -10%;
-    padding: 30px 20px 50px 30px;
+    padding: 30px 20px 20px 30px;
 }
 .middle .title-middle {
     font-weight: bolder;
@@ -265,6 +284,7 @@
     color: #fff;
     text-align: center;
     font-size: 0.8rem;
+    text-transform: uppercase;
 }
 .middle-right .product-category {
     display: flex;
@@ -275,6 +295,8 @@
     margin-right: 10px;
 }
 .rule-shipping {
+    width: 90%;
+    margin: auto;
     background-color: #fafafa;
 }
 .rule-shipping li .rule-ship .icon-shipping {
@@ -296,10 +318,10 @@
     margin: 5px 0px;
     font-weight: bolder;
 }
-.shop-image .image-shop>li {
+.shop-image .image-shop > li {
     width: 20%;
 }
-.shop-image .image-shop>li>img {
+.shop-image .image-shop > li > img {
     width: 100%;
 }
 .shop-image .image-shop > li {
@@ -339,7 +361,7 @@
     transition:all 0.3s ease-in-out;
     z-index:1;
 }
-.shop-image .image-shop > li:hover:after{
+.shop-image .image-shop > li:hover:after {
     border-width:0 0 280px 250px;
     transition:all 0.3s ease-in-out;
     z-index:1;

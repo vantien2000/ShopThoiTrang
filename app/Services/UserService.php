@@ -1,13 +1,13 @@
 <?php
-namespace App\Services\Admin;
+namespace App\Services;
 
-use App\Contracts\Repositories\UserAdminRepository;
+use App\Contracts\Repositories\UserRepository;
 
 class UserService
 {
-    protected UserAdminRepository $userRepository;
+    protected UserRepository $userRepository;
 
-    public function __construct(UserAdminRepository $userRepository)
+    public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }
@@ -21,5 +21,9 @@ class UserService
         $isUpdate = $this->userRepository->edit($user_id, 'user_id', $data);
         $user = $isUpdate ? $this->userRepository->show($user_id, 'user_id') : [];
         return $user;
+    }
+
+    public function createUser($data) {
+        return $this->userRepository->store($data);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace App\Contracts;
 
-interface AdminInterface 
+interface RepositoryInterface 
 {
 
     public function modal();

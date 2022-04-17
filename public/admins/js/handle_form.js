@@ -3,10 +3,12 @@ $(document).ready(function() {
     let deleteCate = $('.table-categiories .delete-btn');
     let deleteType = $('.table-types .delete-btn');
     let deleteProduct = $('.table-products .delete-btn');
+    let deleteReview = $('.table-reviews .delete-btn');
 
     handleDelete(deleteCate);
     handleDelete(deleteType);
     handleDelete(deleteProduct);
+    handleDelete(deleteReview);
 
     function handleDelete(selector) {
       selector.on('click', function(e) {

@@ -39,7 +39,6 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::post('/edit-type/{id}', 'Admin\TypeController@editType')->name('admin.type.edit');
     Route::get('/delete-type/{id}', 'Admin\TypeController@deleteType')->name('admin.type.delete');
     Route::get('/types/{category_name?}/{status?}/{sort_num?}/{sort_alpha?}', 'Admin\TypeController@typeShow')->name('admin.type.filter');
-
     //Products
     Route::get('/products', 'Admin\ProductController@index')->name('admin.products');
     Route::get('/add-product', 'Admin\ProductController@showAdd')->name('admin.add.products');
@@ -49,11 +48,13 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::get('/delete-product/{id}', 'Admin\ProductController@deleteProduct')->name('admin.delete.products');
     Route::get('/products/{keyword?}/{type_id?}/{status?}', 'Admin\CategoryController@index')->name('admin.products.filter');
     Route::get('/detail-product/{id}', 'Admin\ProductController@detailProduct')->name('admin.detail.products');
-
     //Users
     Route::get('/users','Admin\UserController@index')->name('admin.users');
     Route::get('/users/{keyword?}/{isActive?}', 'Admin\UserController@filter')->name('admin.users.filter');
     Route::get('/edit-user/{id}/{isActive?}', 'Admin\UserController@editUser')->name('admin.edit.users');
+    //Reviews
+    Route::get('reviews','Admin\ReviewController@index')->name('admin.reviews');
+    Route::get('/delete-review/{id}', 'Admin\ReviewController@deleteReviews')->name('admin.delete.reviews');
     //ckeditor
     Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
     ->name('ckfinder_connector');
@@ -69,4 +70,7 @@ Route::prefix('/')->group(function () {
     Route::get('/product/{id}', 'Users\ProductController@index')->name('users.detail');
     Route::post('/postLogin', 'Users\LoginController@postLogin')->name('users.post.login');
     Route::post('/postRegister', 'Users\LoginController@postRegister')->name('users.post.register');
+    Route::post('/postReview', 'Users\ProductController@postReviews')->name('users.post.review');
+    Route::get('/cart', 'Users\CartController@index')->name('users.cart');
+    Route::post('/cart/add-to-cart', 'Users\CartController@addCart')->name('users.post.cart');
 });

@@ -1,0 +1,132 @@
+.table-cart td, th {
+    padding: 1.2rem 1rem !important;
+    vertical-align: middle !important;
+    border-top: none !important;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.table-cart td:nth-child(1) {
+    display: flex;
+    align-items: center;
+}
+
+.table-cart td:nth-child(1) .product_name {
+    font-size: 1rem;
+    font-weight: 400;
+    display: block;
+    width: 80%;
+}
+
+.table-cart .price, sup {
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.table-cart td:nth-child(3) {
+    width: 120px;
+}
+
+.table-cart .quantity {
+    padding: 5px;
+    font-size: 1.2rem;
+    text-align: center;
+    height: 40px;
+    width: 50px;
+    border: 2px solid black;
+}
+
+.table-cart .remove_btn {
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    color: rgb(245, 86, 86);
+}
+
+.total-wrapper {
+    margin-top: 3.8rem;
+    border: 2px dashed #dee2e6;
+    padding: 1rem 2rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.total-wrapper .cart-total, .subtotal, .shipping {
+    padding: 1.2rem 0px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.total-wrapper .total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem 0px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(240, 65, 34);
+    text-transform: uppercase;
+}
+
+.total-wrapper a.btn_pay {
+    display: block;
+    text-decoration: none;
+    color: rgb(240, 65, 34);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.4rem 2rem;
+    width: 100%;
+    border: 1px solid rgb(240, 65, 34);
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.continue-shop {
+    margin-top: 2rem;
+}
+
+.continue-shop .btn_continue {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.4rem 2rem;
+    font-weight: 400;
+    border: 1px solid rgb(31, 30, 30);
+    color:rgb(31, 30, 30);
+}
+
+.total-wrapper a.btn_pay:hover {
+    background-color: rgb(240, 65, 34);
+    border: 1px solid rgb(240, 65, 34);
+    color: #fff !important;
+}
+
+.continue-shop .btn_continue:hover {
+    color: rgb(31, 30, 30) !important;
+}
+
+.empty-cart {
+    margin: 2.5rem auto;
+    text-align: center;
+}
+
+.empty-cart .empty-cart-name {
+    font-size: 1.8rem;
+    font-weight: bolder;
+    margin: 0;
+}
+.empty-cart .empty-cart-btn a {
+    margin: 1rem auto;
+    width: 35%;
+    border: 1px solid rgb(248, 175, 38);
+    color: rgb(248, 175, 38);
+    padding: 0.6rem 0px;
+}
+
+.empty-cart .empty-cart-btn a:hover {
+    background-color: rgb(252, 171, 21);
+    color: #fff !important;
+}

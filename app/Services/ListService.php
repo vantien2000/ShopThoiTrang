@@ -1,25 +1,25 @@
 <?php
-namespace App\Services\Admin;
+namespace App\Services;
 
-use App\Contracts\Repositories\CategoryAdminRepository;
-use App\Contracts\Repositories\TypeAdminRepository;
+use App\Contracts\Repositories\CategoryRepository;
+use App\Contracts\Repositories\TypeRepository;
 
 class ListService
 {
-    protected CategoryAdminRepository $cateRepository;
-    protected TypeAdminRepository $typeRepository;
+    protected CategoryRepository $cateRepository;
+    protected TypeRepository $typeRepository;
 
     public function __construct(
-        CategoryAdminRepository $cateRepository,
-        TypeAdminRepository $typeRepository
+        CategoryRepository $cateRepository,
+        TypeRepository $typeRepository
     )
     {
         $this->cateRepository = $cateRepository;
         $this->typeRepository = $typeRepository;
     }
 
-    public function showCateUser() {
-        return $this->cateRepository->showCateUser();
+    public function showCateUsers($category_type) {
+        return $this->cateRepository->showCateUsers($category_type);
     }
 
     public function showCate($array) {

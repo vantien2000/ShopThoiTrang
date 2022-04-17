@@ -1,13 +1,13 @@
 <?php
-namespace App\Services\Admin;
+namespace App\Services;
 
-use App\Contracts\Repositories\ProductAdminRepository;
+use App\Contracts\Repositories\ProductRepository;
 
 class ProductService
 {
-    protected ProductAdminRepository $product;
+    protected ProductRepository $product;
 
-    public function __construct(ProductAdminRepository $product)
+    public function __construct(ProductRepository $product)
     {
         $this->product = $product;
     }
@@ -40,5 +40,17 @@ class ProductService
 
     public function getProductById($product_id, $key = PRODUCT_ID_KEY) {
         return $this->product->detail($product_id, $key);
+    }
+
+    public function newProducts() {
+        return $this->product->newProducts();
+    }
+
+    public function productDetail($product_id, $key = PRODUCT_ID_KEY) {
+        return $this->product->show($product_id, $key);
+    }
+
+    public function quantityProductID($product_id, $key = PRODUCT_ID_KEY) {
+        return $this->product->getQuantityProduct($product_id, $key);
     }
 }

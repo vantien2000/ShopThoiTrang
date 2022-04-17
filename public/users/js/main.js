@@ -35,4 +35,8 @@ $(document).ready(function() {
             $('.size-element .size-'+val).addClass('active');
         }
     });
+    $('.btn-addition-infor').on('click', function() {
+        $('.additional-information').toggleClass('d-block d-none');
+        $(this).toggleClass('fa-minus fa-plus');
+    });
 });

@@ -68,7 +68,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void()">
+                                    <a href="javascript:void(0)">
                                         <img class="float-left mr-3 avatar-img" src="images/avatar/4.jpg" alt="">
                                         <div class="notification-content">
                                             <div class="notification-heading">Hilari Clinton</div>

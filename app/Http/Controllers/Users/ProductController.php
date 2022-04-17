@@ -3,22 +3,42 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use App\Services\Admin\ListService;
-use App\Services\Users\ProductService;
+use App\Services\ListService;
+use App\Services\ProductService;
+use App\Services\ReviewsService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    protected $list, $productService;
-    public function __construct(ListService $list, ProductService $productService)
+    protected $list, $productService, $reviewsService;
+    public function __construct(
+        ListService $list, 
+        ProductService $productService,
+        ReviewsService $reviewsService)
     {
         $this->list = $list;
+        $this->reviewsService = $reviewsService;
         $this->productService = $productService;
     }
     public function index(Request $request) {
         $product_id = $request->id;
         $product = $this->productService->productDetail($product_id);
-        $categories = $this->list->showCateUser();
-        return view('users.details.index',compact('categories', 'product'));
+        $reviews = $this->reviewsService->getReviewByProductId($product_id);
+        $categories_male = $this->list->showCateUsers(STATUS_ON);
+        $categories_female = $this->list->showCateUsers(STATUS_OFF);
+        return view('users.details.index',compact(
+            'categories_male',
+            'product', 
+            'categories_female',
+            'reviews'
+        ));
+    }
+
+    public function postReviews(Request $request) {
+        $data = $request->all();
+        unset($data['_token']);
+        $review = $this->reviewsService->createReviews($data);
+        $this->reviewsService->updateRateProduct();
+        return response()->json($review);
     }
 }

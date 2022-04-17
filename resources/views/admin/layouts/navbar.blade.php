@@ -32,6 +32,12 @@
                     <i class="icon-grid menu-icon"></i> <span class="nav-text">Sản phẩm</span>
                 </a>
             </li>
+            <li class="nav-label">Reviews</li>
+            <li>
+                <a href="{{ route('admin.reviews') }}" aria-expanded="false">
+                    <i class="icon-grid menu-icon"></i> <span class="nav-text">Đánh Giá</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

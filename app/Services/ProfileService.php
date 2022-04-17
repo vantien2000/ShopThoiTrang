@@ -1,13 +1,13 @@
 <?php
-namespace App\Services\Admin;
+namespace App\Services;
 
-use App\Contracts\Repositories\ProfileAdminRepository;
+use App\Contracts\Repositories\ProfileRepository;
 
 class ProfileService
 {
-    protected ProfileAdminRepository $profileRepository;
+    protected ProfileRepository $profileRepository;
 
-    public function __construct(ProfileAdminRepository $profileRepository)
+    public function __construct(ProfileRepository $profileRepository)
     {
         $this->profileRepository = $profileRepository;
     }

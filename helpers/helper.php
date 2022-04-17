@@ -22,4 +22,14 @@
             return $price*(1 - $sale/100);
         }
     }
+
+    if (!function_exists('sub_total')) {
+        function sub_total($array) {
+            $subtotal = 0;
+            foreach ($array as $item) {
+                $subtotal += $item['quantity'] * price_sale($item['products']['price'], $item['products']['sale']);
+            }
+            return $subtotal;
+        }
+    }
 ?>

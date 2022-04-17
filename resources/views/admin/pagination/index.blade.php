@@ -1,4 +1,4 @@
-@if (!isset($paginator))
+@if ($paginator)
     @if ($paginator->lastPage() > 1)
     @php
         $limit_page = 5;
