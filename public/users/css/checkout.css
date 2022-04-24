@@ -1,0 +1,36 @@
+.customer_checkout {
+    width: 98%;
+    margin: 1rem auto;
+}
+.checkout_element {
+    margin: 0 auto !important;
+    max-width: 48%;
+}
+.order_custom .form-group input {
+    height: 45px;
+    font-size: 1rem;
+}
+.order-right-wrapper {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.table-order tr td {
+    padding: 1rem 0 !important;
+    border: none !important;
+}
+.payment {
+    margin: 1rem 0 !important;
+}
+.payment label {
+    line-height: 15px;
+}
+.payment input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    outline: none;
+    border: 0px !important;
+    background: none !important;
+}

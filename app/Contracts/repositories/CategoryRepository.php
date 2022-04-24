@@ -37,4 +37,6 @@ class CategoryRepository extends RepositoryAbstract
         //pagination
         return $category->paginate(5);
     }
+
+    
 }

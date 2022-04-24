@@ -5,13 +5,22 @@
     <ul class="d-flex m-0">
         @if ($currentRoute == 'users.detail')
         <li class="pr-2">Trang chủ </li>
-        <li class="pr-2 pl-2 link"><a href="">{{ $product->types->categories->category_name }}</a></li>
+        <li class="pr-2 pl-2 link"><a href="{{ route('users.category.product', ['id' => $product->types->categories->category_id]) }}">{{ $product->types->categories->category_name }}</a></li>
         <li class="pr-2 pl-2 link"><a href="">{{ $product->types->type_name }}</a></li>
         <li class="pr-2 pl-2 link"> {{ $product->product_name }}</li>
         @endif
         @if ($currentRoute == 'users.cart')
         <li class="pr-2">Trang chủ </li>
         <li class="pr-2 pl-2 link"> Giỏ Hàng</li>
+        @endif
+        @if ($currentRoute == 'users.category.product')
+        <li class="pr-2">Trang chủ </li>
+        <li class="pr-2 pl-2 link">Danh mục </li>
+        <li class="pr-2 pl-2 link">{{ $category->category_name }}</a></li>
+        @endif
+        @if ($currentRoute == 'users.checkout')
+        <li class="pr-2">Trang chủ </li>
+        <li class="pr-2 pl-2 link"> Đặt hàng</li>
         @endif
     </ul>
 </div>

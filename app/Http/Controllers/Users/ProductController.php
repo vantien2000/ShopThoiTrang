@@ -24,13 +24,15 @@ class ProductController extends Controller
         $product_id = $request->id;
         $product = $this->productService->productDetail($product_id);
         $reviews = $this->reviewsService->getReviewByProductId($product_id);
+        $newProducts = $this->productService->newProducts();
         $categories_male = $this->list->showCateUsers(STATUS_ON);
         $categories_female = $this->list->showCateUsers(STATUS_OFF);
         return view('users.details.index',compact(
             'categories_male',
             'product', 
             'categories_female',
-            'reviews'
+            'reviews',
+            'newProducts'
         ));
     }
 

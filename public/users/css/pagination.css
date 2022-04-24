@@ -1,0 +1,25 @@
+.pagination {
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.pagination li {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    margin-left: 2px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+}
+.pagination li.active {
+    background-color: #000;
+}
+.pagination li.active a {
+    color: #fff;
+}
+.pagination li a {
+    color: black;
+    font-size: 1rem;
+}

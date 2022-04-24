@@ -25,8 +25,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'product_name' => 'required|max:255',
-            'description' => 'required',
-            'image_upload' => 'image|mimes:jpg,png,webp,jpeg,gif,svg|max:2048|dimensions:min_width=10,min_height=10,max_width=1000,max_height=1000',
+            'image_upload' => 'image|mimes:jpg,png,webp,jpeg,gif,svg',
             'image' => 'required|string',
             'price' => 'required|numeric|min:10000',
             'sale'  => 'regex:/^\d+(\.\d{1,2})?$/|max:90',
@@ -39,7 +38,6 @@ class ProductRequest extends FormRequest
         return [
             'product_name.required' => 'Tên sản phẩm không được để trống',
             'product_name.max' => 'Tên sản phẩm quá dài',
-            'description.required' => 'Mô tả không được để trống',
             'image_upload.image' => 'Ảnh không phù hợp',
             'image_upload.max' => "Ảnh không quá 2Mb",
             'image_upload.dimensions' => 'Ảnh không đúng kích thước cho phép',

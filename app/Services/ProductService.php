@@ -53,4 +53,12 @@ class ProductService
     public function quantityProductID($product_id, $key = PRODUCT_ID_KEY) {
         return $this->product->getQuantityProduct($product_id, $key);
     }
+
+    public function productsCategory($category_id) {
+        return $this->product->getProductsByCategoryId($category_id);
+    }
+
+    public function filterProductUser($filter, $id) {
+        return $this->product->filterProductUser($filter, $id);
+    }
 }

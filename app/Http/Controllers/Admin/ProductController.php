@@ -53,9 +53,10 @@ class ProductController extends Controller
         $product_id = $request->id;
         $data = $request->all();
         $image_name = $request->image . '.webp';
+        convert_image_webp($request->file('image_upload'), 250, 300)->save(public_path() . '/userfiles/images/products/' . $image_name);
         $data['image'] = $image_name;
         $data['add_infor'] = $request->add_infor ?? "";
-        unset($data['_token']);
+        unset($data['_token'], $data['image_upload']);
         $this->productsService->editProduct($product_id, $data);
         return redirect()->route('admin.products');
     }

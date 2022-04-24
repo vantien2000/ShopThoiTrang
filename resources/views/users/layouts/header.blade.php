@@ -22,7 +22,7 @@
     </div>
     <div class="header-bottom">
         <div class="logo-header">
-            <a href=""><img src="{{ asset('/users/images/header/logo.jpg') }}" width="100" alt=""></a>
+            <a href="{{ route('users.home') }}"><img src="{{ asset('/users/images/header/logo.jpg') }}" width="100" alt=""></a>
         </div>
         <div class="navbar">
             <ul class="navbar-header">
@@ -30,22 +30,22 @@
                 <li class="menu-active">
                     <a href="">{{ config('setup.cates')[0] }}<i class="fa fa-chevron-down"></i></a>
                     <div class="menu-level">
-                        @foreach ($categories_male as $category)
-                            <div class="menu-category-header">
-                                <a class="text-dark f-bolder" href="http://">{{ $category->category_name }}</a>
-                                @foreach ($category->types as $type)
-                                    <a href="http://">{{ $type->type_name }}</a>
-                                @endforeach
-                            </div>
+                        @foreach ($categories_female as $category)
+                        <div class="menu-category-header">
+                            <a class="text-dark f-bolder" href="{{ route('users.category.product', ['id' => $category->category_id]) }}">{{ $category->category_name }}</a>
+                            @foreach ($category->types as $type)
+                                <a href="http://">{{ $type->type_name }}</a>
+                            @endforeach
+                        </div>
                         @endforeach
                     </div>
                 </li>
                 <li class="menu-active">
                     <a href="">{{ config('setup.cates')[1] }}<i class="fa fa-chevron-down"></i></a>
                     <div class="menu-level">
-                        @foreach ($categories_female as $category)
+                        @foreach ($categories_male as $category)
                             <div class="menu-category-header">
-                                <a class="text-dark f-bolder" href="http://">{{ $category->category_name }}</a>
+                                <a class="text-dark f-bolder" href="{{ route('users.category.product', ['id' => $category->category_id]) }}">{{ $category->category_name }}</a>
                                 @foreach ($category->types as $type)
                                     <a href="http://">{{ $type->type_name }}</a>
                                 @endforeach

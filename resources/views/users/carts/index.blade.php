@@ -1,8 +1,8 @@
 @extends('users.layouts.master')
 @section('content')
+@include('users.layouts.pageLink')
 <div class="main-container page-cart">
     <div class="container-wrapper">
-        @include('users.layouts.pageLink')
         @if (session('carts'))
         <div class="wrapper-cart row">
             <div class="col-lg-8 col-sm-7">
@@ -14,16 +14,16 @@
                         <th>TỔNG</th>
                         <th></th>
                     </tr>
-                    @foreach ($carts as $cart)
-                    <tr>
+                    @foreach ($carts as $key => $cart)
+                    <tr class="cart-{{ $key }}">
                         <td>
                             <img src="{{ asset('/userfiles/images/products/' . $cart['products']['image']) }}" width="60px" height="60px" class="mr-3" alt="product_image">
-                            <span class="product_name">{{ $cart['products']['product_name'] }}</span>
+                            <span class="product_name">{{ $cart['products']['product_name'] }}<br>Size-{{ $cart['size'] }}</span>
                         </td>
                         <td><span class="price">{{ number_format(price_sale($cart['products']['price'], $cart['products']['sale']),  0, ',', '.') }}</span><sup>vnđ</sup></td>
-                        <td><input class="quantity" type="number" name="" id="" value="{{ $cart['quantity'] }}" min="0" max="{{ $cart['products']['quantity'] }}"></td>
-                        <td><span class="price">{{ number_format(price_sale($cart['products']['price'], $cart['products']['sale']) * $cart['quantity'],  0, ',', '.') }}</span><sup>vnđ</sup></td>
-                        <td><button class="remove_btn"><i class="fa fa-times"></i></button></td>
+                        <td><input class="quantity" type="number" data-product-id="{{ $cart['products']['product_id'] }}" data-size="{{ $cart['size'] }}" id="quantity" value="{{ $cart['quantity'] }}" min="1" max="{{ $cart['products']['quantity'] }}"></td>
+                        <td><span class="price total-{{ $key }}">{{ number_format(price_sale($cart['products']['price'], $cart['products']['sale']) * $cart['quantity'],  0, ',', '.') }}</span><sup>vnđ</sup></td>
+                        <td><button data-key={{ $key }} class="remove_btn"><i class="fa fa-times"></i></button></td>
                     </tr> 
                     @endforeach
                 </table>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="total d-flex">
                         <div class="total-title">Tổng Tiền:</div>
-                        <span> {{ number_format($shipCost + sub_total($carts), 0, ',', '.') }} <sup>vnđ</sup></span>
+                        <span>{{ number_format($shipCost + sub_total($carts), 0, ',', '.') }} <sup>vnđ</sup></span>
                     </div>
                     <a href="" class="btn_pay">ĐẶT HÀNG</a>
                 </div>

@@ -1,12 +1,12 @@
 @extends('users.layouts.master')
 @section('content')
+@include('users.layouts.pageLink')
     <div class="main-container page-detail">
         <div class="container-wrapper">
-            @include('users.layouts.pageLink')
             <div class="detail-product">
                 <div class="row">
                     <div class="detail-left col-lg-6">
-                        <img id="image_zoom" src="{{ asset('/userfiles//images/products/' . $product->image) }}" width="100%" height="494px" alt="">
+                        <img id="image_zoom" src="{{ asset('/userfiles//images/products/' . $product->image) }}" width="100%" alt="">
                     </div>
                     <div class="detail-right col-lg-6">
                         <p class="product-name">{{ $product->product_name }}</p>
@@ -32,8 +32,9 @@
                             Tiết kiệm: {{  number_format(($product->price * $product->sale / 100), 0, ',', '.') }} <sup>vnđ</sup><span class="product-sale">-{{ $product->sale }}%</span>
                         </div>
                         <hr>
-                        <form action="{{ route('users.post.cart') }}" method="POST">
+                        <form action="{{ route('users.add.cart') }}" method="POST" id="form-detail">
                             @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                             <div class="choose">
                                 <div class="title-size f-bolder">
                                     Kích Thước
@@ -54,7 +55,7 @@
                                 <button type="submit" class="btn btn-dark">THÊM VÀO GIỎ HÀNG</button>
                             </div>
                         </form>
-                        <div class="add-information mt-3">
+                        <div class="add-information mt-5">
                             <div class="add-infor-block d-flex align-items-center">
                                 <span class="f-bolder">Thông tin thêm </span><i class="fa fa-plus ml-3 btn-addition-infor" aria-hidden="true"></i>
                             </div>
@@ -65,7 +66,11 @@
                     </div>
                 </div>
             </div>
-            @include('users.reviews.index')
+            <div class="detail-rating-rule d-flex justify-content-between">
+                @include('users.reviews.index')
+                @include('users.home.rule')
+            </div>
         </div>
     </div>
+    @include('users.home.recomend')
 @stop

@@ -26,21 +26,42 @@ class CartController extends Controller
         $carts = session('carts');
         //Nếu giỏ hàng chưa có
         $this->validateQuantity($request->quantity, $request->product_id);
+        $size = isset($request->size) ? $request->size : config('setup.sizes')[0];
         if (empty(session('carts'))) {
-            $carts[$request->product_id] = $this->getCart($request->all());
+            $carts[$request->product_id . '-' .$size] = $this->getCart($request->all());
             session()->put('carts', $carts);
         }
         else {
             $carts = session('carts');
-            if (isset($carts[$request->product_id])) {
-                $carts[$request->product_id]['quantity'] += $request->quantity;
-                $errors = $this->validateQuantity($carts[$request->product_id]['quantity'], $request->product_id);
+            if (isset($carts[$request->product_id . '-' .$size])) {
+                $carts[$request->product_id . '-' .$size]['quantity'] += $request->quantity;
+                $this->validateQuantity($carts[$request->product_id . '-' .$size]['quantity'], $request->product_id);
             } else {
-                $carts[$request->product_id] = $this->getCart($request->all());
+                $carts[$request->product_id . '-' .$size] = $this->getCart($request->all());
             }
             session()->put('carts', $carts);
         }
         return ['cart_count' => count(session('carts'))];
+    }
+
+    public function updateCart(Request $request) {
+        $carts = session('carts');
+        $size = isset($request->size) ? $request->size : config('setup.sizes')[0];
+        if(isset($carts[$request->product_id . '-' .$size])) {
+            $carts[$request->product_id . '-' . $size]['quantity'] = $request->quantity;
+            $this->validateQuantity($request->product_id, $carts[$request->product_id . '-' .$size]['quantity']);
+            session()->put('carts', $carts);
+        }
+        return session('carts');
+    }
+
+    public function deleteCart(Request $request) {
+        $carts = session('carts');
+        if(isset($carts[$request->key])) {
+            unset($carts[$request->key]);
+            session()->put('carts', $carts);
+        }
+        return session('carts');
     }
 
     public function getCart($array) {

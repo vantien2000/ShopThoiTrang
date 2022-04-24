@@ -72,5 +72,10 @@ Route::prefix('/')->group(function () {
     Route::post('/postRegister', 'Users\LoginController@postRegister')->name('users.post.register');
     Route::post('/postReview', 'Users\ProductController@postReviews')->name('users.post.review');
     Route::get('/cart', 'Users\CartController@index')->name('users.cart');
-    Route::post('/cart/add-to-cart', 'Users\CartController@addCart')->name('users.post.cart');
+    Route::post('/cart/add-to-cart', 'Users\CartController@addCart')->name('users.add.cart');
+    Route::post('/cart/update-cart', 'Users\CartController@updateCart')->name('users.update.cart');
+    Route::post('/cart/delete-cart', 'Users\CartController@deleteCart')->name('users.delete.cart');
+    Route::get('/categories/{id}', 'Users\CategoryController@index')->name('users.category.product');
+    Route::post('/filter_categories/{id}', 'Users\CategoryController@filterCategory')->name('users.category.filter');
+    Route::get('/checkout', 'Users\CheckoutController@index')->name('users.checkout');
 });

@@ -51,4 +51,37 @@ class ProductRepository extends RepositoryAbstract
     public function getQuantityProduct($product_id, $key) {
         return $this->modal->where($key, $product_id)->pluck('quantity')->toArray();
     }
+
+    public function getProductsByCategoryId($category_id) {
+        return $this->productsByCategoryId($category_id)->paginate(12);
+    }
+
+    public function filterProductUser($filter, $category_id) {
+        $products = $this->productsByCategoryId($category_id);
+        if (isset($filter['sort_category'])) {
+            if ($filter['sort_category'] == 'a_z') {
+                $products->orderByRaw('products.product_name asc');
+            }
+            if ($filter['sort_category'] == 'z_a') {
+                $products->orderByRaw('products.product_name desc');
+            }
+            if ($filter['sort_category'] == 't_c') {
+                $products->orderByRaw('products.price asc');
+            }
+            if ($filter['sort_category'] == 'c_t') {
+                $products->orderByRaw('products.price desc');
+            }
+        }
+        if (isset($filter['size'])) {
+            $products->where('products.size', $filter['size']);
+        }
+        return $products->paginate(12);
+    }
+
+    public function productsByCategoryId($category_id) {
+        $products = $this->modal->leftJoin('types', 'types.type_id', '=', 'products.type_id')
+        ->leftJoin('categories', 'categories.category_id', '=', 'types.category_id')
+        ->where('categories.category_id', $category_id);
+        return $products;
+    }
 }
