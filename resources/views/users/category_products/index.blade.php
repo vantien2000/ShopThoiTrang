@@ -46,13 +46,13 @@
                     <div class="size-title my-3">
                         <div>Giá </div><span></span>
                     </div>
-                    <div id="rangeslider">
-                    </div>
-                    <div class="price-range d-flex justify-content-between">
-                        <label for="min_price" class="min_price"></label>
-                        <input width="30px" name="min_price" type="text" id="min_price" value="" hidden>
-                        <label for="max_price" class="max_price"></label>
-                        <input width="30px" name="max_price" type="text" id="max_price" value="" hidden>
+                    <div class="price-range d-block">
+                        @foreach (config('setup.price_filter') as $key => $price)
+                        <div class="price-filter">
+                            <input type="radio" value="{{ $key }}" id="price-{{ $key }}" name="price_filter">
+                            <label for="price-{{ $key }}">{!! format_price_filter($price) !!}</label>
+                        </div>
+                        @endforeach
                     </div>
                 </form>
             </div>

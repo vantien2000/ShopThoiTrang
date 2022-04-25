@@ -4,6 +4,7 @@ namespace App\Contracts\Repositories;
 use App\Contracts\RepositoryAbstract;
 use Illuminate\Support\Facades\DB;
 use Models\Products;
+use PhpParser\Node\Expr\Cast\Double;
 
 class ProductRepository extends RepositoryAbstract
 {
@@ -74,6 +75,13 @@ class ProductRepository extends RepositoryAbstract
         }
         if (isset($filter['size'])) {
             $products->where('products.size', $filter['size']);
+        }
+        if (isset($filter['price_filter'])) {
+            $price_filter = explode('-', config('setup.price_filter')[$filter['price_filter']]);
+            $price_min = (double)$price_filter[0];
+            $price_max = (double)$price_filter[1];
+            $products->whereRaw('products.price * (1 - products.sale/100) >=  '.$price_min . ' and ' . 
+            'products.price * (1 - products.sale/100) <= '. $price_max); 
         }
         return $products->paginate(12);
     }

@@ -157,6 +157,7 @@ $(document).ready(function() {
       url: $(this).attr('action'),
       data: _form,
       success: function(res) {
+        console.log(res);
         $('.product-wrapper-category').html(res);
       }
     })

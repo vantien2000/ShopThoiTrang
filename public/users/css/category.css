@@ -69,13 +69,18 @@
     margin-left: 0.4rem;
     margin-bottom: 0.4rem;
 }
-.price-range {
-    width: 80%;
+.price-range .price-filter {
+    display: flex;
+    align-items: center;
+}
+.price-range > input {
+    border: 0px;
 }
 .price-range label {
-    margin-top: 10px;
-    width: 80px;
+    margin-top: 7px;
     border: 0;
     background-color: none;
-    font-size: 0.8rem;
+    font-weight: bolder;
+    margin-left: 5px;
+    font-size: 0.9rem;
 }

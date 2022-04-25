@@ -32,4 +32,12 @@
             return $subtotal;
         }
     }
+
+    if (!function_exists('format_price_filter')) {
+        function format_price_filter($price) {
+            $arr_price = explode('-', $price);
+            $output = number_format((double)$arr_price[0], 0, ',' , '.') . '<sup>vnđ</sup>' . ' - ' . number_format((double)$arr_price[1], 0, ',' , '.') . '<sup>vnđ</sup>';
+            return $output;
+        }
+    }
 ?>
