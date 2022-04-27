@@ -145,7 +145,31 @@ $(document).ready(function() {
   });
 
   $('#form-detail').on('submit', function(e) {
-    location.href = location.origin + 'cart';
+    e.preventDefault();
+    var _form = $(this).serialize();
+    $.ajax({
+      type: 'POST',
+      url: location.origin + '/cart/add-to-cart',
+      data: _form,
+      success: function(res) {
+        if(res.err) {
+          Swal.fire(
+            res.message
+          )
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Thêm thành công',
+            showConfirmButton: false,
+            timer: 1500
+          }).then((result) => {
+            $('.cart-count').text(res.cart_count);
+            location.href = location.origin + '/cart';
+          });
+        }
+      }
+    });
   });
 
   $('#category_filter_sort , #category_filter').on('change', function(e) {

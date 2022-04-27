@@ -60,6 +60,9 @@ class ProductRepository extends RepositoryAbstract
     public function filterProductUser($filter, $category_id) {
         $products = $this->productsByCategoryId($category_id);
         if (isset($filter['sort_category'])) {
+            if ($filter['sort_category'] == 'all') {
+                $products = $products;
+            }
             if ($filter['sort_category'] == 'a_z') {
                 $products->orderByRaw('products.product_name asc');
             }
@@ -82,6 +85,9 @@ class ProductRepository extends RepositoryAbstract
             $price_max = (double)$price_filter[1];
             $products->whereRaw('products.price * (1 - products.sale/100) >=  '.$price_min . ' and ' . 
             'products.price * (1 - products.sale/100) <= '. $price_max); 
+        }
+        if (isset($filter['type_id'])) {
+            $products->where('types.type_id', $filter['type_id']);
         }
         return $products->paginate(12);
     }
