@@ -72,10 +72,12 @@ a:hover {
   font-weight: bolder !important;
 }
 
-.main-container {
+.master-container {
+  position: relative;
   display: block;
   margin: auto;
   overflow-x: hidden;
+  top: 127px;
 }
 .container {
   margin: 0px;

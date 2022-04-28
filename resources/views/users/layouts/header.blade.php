@@ -34,7 +34,7 @@
                         <div class="menu-category-header">
                             <a class="text-dark f-bolder" href="{{ route('users.category.product', ['id' => $category->category_id]) }}">{{ $category->category_name }}</a>
                             @foreach ($category->types as $type)
-                                <a href="http://">{{ $type->type_name }}</a>
+                                <a href="{{ route('users.type.product', ['id' => $type->type_id]) }}">{{ $type->type_name }}</a>
                             @endforeach
                         </div>
                         @endforeach
@@ -47,7 +47,7 @@
                             <div class="menu-category-header">
                                 <a class="text-dark f-bolder" href="{{ route('users.category.product', ['id' => $category->category_id]) }}">{{ $category->category_name }}</a>
                                 @foreach ($category->types as $type)
-                                    <a href="http://">{{ $type->type_name }}</a>
+                                    <a href="{{ route('users.type.product', ['id' => $type->type_id]) }}">{{ $type->type_name }}</a>
                                 @endforeach
                             </div>
                         @endforeach

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="main-container">
+    <div class="master-container">
         @include('users.layouts.header')
         <div class="main-wrapper">
             @yield('content')

@@ -4,10 +4,11 @@
 <div class="main-container page-category-product">
     <div class="category-wrapper">
         <div class="category-top d-flex align-items-center justify-content-between">
-            <div class="category-top-title d-flex align-items-center"><h4 class="f-bolder m-0 mr-3">{{ $category->category_name }}</h4 ><span>({{ $category->count() }} sản phẩm)</span></div>
+            <div class="category-top-title d-flex align-items-center"><h4 class="f-bolder m-0 mr-3">{{ $category->category_name }}</h4 ><span>({{ $productsByCategoryId->count() }} sản phẩm)</span></div>
             <div class="sort-category d-flex align-items-center mr-3">
                 <form id="category_filter_sort" action="{{ route('users.category.filter', ['id' => $category->category_id]) }}" method="post">
                     @csrf
+                    <input type="hidden" name="type_category" value="category"/>
                     <label class="m-0" for="">Sắp xếp theo: </label>
                     <select name="sort_category" class="ml-2" id="sort_category">
                         @foreach (config('setup.filter_category_type') as $key => $value)
@@ -21,6 +22,7 @@
             <div class="category-filter-left">
                 <form id="category_filter" action="{{ route('users.category.filter', ['id' => $category->category_id]) }}" method="POST">
                     @csrf
+                    <input type="hidden" name="type_category" value="category"/>
                     <div class="size-title">
                         <div>Loại sản phẩm </div>
                     </div>
@@ -56,7 +58,7 @@
                     </div>
                 </form>
             </div>
-            @if (!empty($productsByCategoryId))
+            @if (!isset($productsByCategoryId) || !empty($productsByCategoryId))
             <div class="category-product-right">
                 <div class="product-wrapper-category">
                     @foreach ($productsByCategoryId as $product)

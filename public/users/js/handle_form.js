@@ -172,9 +172,8 @@ $(document).ready(function() {
     });
   });
 
-  $('#category_filter_sort , #category_filter').on('change', function(e) {
+  $('.sort-category > #category_filter_sort , #category_filter').on('change', function(e) {
     e.preventDefault();
-    var _this
     var _form = $(this).serialize()
     $.ajax({
       type: "POST",

@@ -1,3 +1,7 @@
+.page-category-product {
+    width: 98%;
+    margin: auto;
+}
 .category-top {
     padding: 15px;
 }
@@ -73,8 +77,9 @@
     display: flex;
     align-items: center;
 }
-.price-range > input {
+.price-range .price-filter input {
     border: 0px;
+    margin-bottom: 2px;
 }
 .price-range label {
     margin-top: 7px;

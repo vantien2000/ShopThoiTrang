@@ -38,6 +38,10 @@ class ListService
         return $this->typeRepository->filter($array);
     }
 
+    public function showTypeById($type_id, $key = TYPE_ID_KEY) {
+        return $this->typeRepository->show($type_id, $key);
+    }
+
     public function showCateById($category_id, $key = CATEGORY_ID_KEY) {
         return $this->cateRepository->show($category_id, $key);
     }

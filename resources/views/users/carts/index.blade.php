@@ -5,7 +5,7 @@
     <div class="container-wrapper">
         @if (session('carts'))
         <div class="wrapper-cart row">
-            <div class="col-lg-8 col-sm-7">
+            <div class="col-lg-8 col-sm-7 mt-5">
                 <table class="table table-cart">
                     <tr>
                         <th>SẢN PHẨM</th>
@@ -48,13 +48,13 @@
                         <div class="total-title">Tổng Tiền:</div>
                         <span>{{ number_format($shipCost + sub_total($carts), 0, ',', '.') }} <sup>vnđ</sup></span>
                     </div>
-                    <a href="" class="btn_pay">ĐẶT HÀNG</a>
                 </div>
                 <div class="continue-shop">
                     <a href="{{ route('users.home') }}" class="btn_continue">TIẾP THỤC MUA HÀNG</a>
                 </div>
             </div>
         </div>
+        @include('users.checkout.index')
         @else
         <div class="empty-cart">
             <p class="f-boler empty-cart-name">GIỎ HÀNG TRỐNG! TIẾP TỤC MUC HÀNG</p>

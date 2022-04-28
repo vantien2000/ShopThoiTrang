@@ -31,11 +31,25 @@ class CategoryController extends Controller
         ));
     }
 
+    public function typeProducts(Request $request) {
+        $categories_male = $this->list->showCateUsers(STATUS_ON);
+        $categories_female = $this->list->showCateUsers(STATUS_OFF);
+        $type_id = $request->id;
+        $productsByTypeId = $this->product->productsTypes($type_id);
+        $type = $this->list->showTypeById($type_id);
+        return view('users.type_products.index', compact(
+            'categories_male', 
+            'categories_female',
+            'productsByTypeId',
+            'type'
+        ));
+    }
+
     public function filterCategory(Request $request) {
         $filter = $request->all();
         unset($filter['_token']);
-        $category_id = $request->id;
-        $products = $this->product->filterProductUser($filter, $category_id);
+        $id = $request->id;
+        $products = $this->product->filterProductUser($filter, $id);
         $html = $products->count() == 0 ? '<p class="f-bolder">Không có sản phẩm!!!</p>' : '';
         foreach ($products as $product) {
             $html .= $this->output($product);

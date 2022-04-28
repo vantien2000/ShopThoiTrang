@@ -57,8 +57,13 @@ class ProductRepository extends RepositoryAbstract
         return $this->productsByCategoryId($category_id)->paginate(12);
     }
 
-    public function filterProductUser($filter, $category_id) {
-        $products = $this->productsByCategoryId($category_id);
+    public function getProductsByTypeId($type_id) {
+        return $this->productsByTypeId($type_id)->paginate(12);
+    }
+
+    public function filterProductUser($filter, $id) {
+        if ($filter['type_category'] == 'category') {$products = $this->productsByCategoryId($id);}
+        if ($filter['type_category'] == 'type') {$products = $this->productsByTypeId($id);}
         if (isset($filter['sort_category'])) {
             if ($filter['sort_category'] == 'all') {
                 $products = $products;
@@ -96,6 +101,12 @@ class ProductRepository extends RepositoryAbstract
         $products = $this->modal->leftJoin('types', 'types.type_id', '=', 'products.type_id')
         ->leftJoin('categories', 'categories.category_id', '=', 'types.category_id')
         ->where('categories.category_id', $category_id);
+        return $products;
+    }
+
+    public function productsByTypeId($type_id) {
+        $products = $this->modal->leftJoin('types', 'types.type_id', '=', 'products.type_id')
+        ->where('types.type_id', $type_id);
         return $products;
     }
 }

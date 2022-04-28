@@ -58,6 +58,10 @@ class ProductService
         return $this->product->getProductsByCategoryId($category_id);
     }
 
+    public function productsTypes($type_id) {
+        return $this->product->getProductsByTypeId($type_id);
+    }
+
     public function filterProductUser($filter, $id) {
         return $this->product->filterProductUser($filter, $id);
     }

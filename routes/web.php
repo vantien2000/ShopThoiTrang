@@ -77,5 +77,6 @@ Route::prefix('/')->group(function () {
     Route::post('/cart/delete-cart', 'Users\CartController@deleteCart')->name('users.delete.cart');
     Route::get('/categories/{id}', 'Users\CategoryController@index')->name('users.category.product');
     Route::post('/filter_categories/{id}', 'Users\CategoryController@filterCategory')->name('users.category.filter');
-    Route::get('/checkout', 'Users\CheckoutController@index')->name('users.checkout');
+    Route::get('/types/{id}', 'Users\CategoryController@typeProducts')->name('users.type.product');
+    Route::post('/filter_types/{id}', 'Users\CategoryController@filterCategory')->name('users.type.filter');
 });
