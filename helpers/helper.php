@@ -33,6 +33,16 @@
         }
     }
 
+    if (!function_exists('total_order')) {
+        function subtotal_order($ordersDetails) {
+            $subtotal = 0;
+            foreach ($ordersDetails as $detail) {
+                $subtotal += $detail->quantity * price_sale($detail->products->price, $detail->products->sale);
+            }
+            return $subtotal;
+        }
+    }
+
     if (!function_exists('format_price_filter')) {
         function format_price_filter($price) {
             $arr_price = explode('-', $price);

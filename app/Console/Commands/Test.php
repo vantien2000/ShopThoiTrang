@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\SendMailInvoice;
+use App\Services\OrderService;
+use App\Services\UserService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Models\Reviews;
@@ -22,13 +25,15 @@ class Test extends Command
      */
     protected $description = 'Test Review';
 
+    protected $userService;
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(OrderService $orderService)
     {
+        $this->orderService = $orderService;
         parent::__construct();
     }
 
@@ -39,6 +44,7 @@ class Test extends Command
      */
     public function handle()
     {
-        return session('carts');
+        $orderAfterSave = $this->orderService->getOrderInsert();
+        dispatch(new SendMailInvoice('vantienn740@gmail.com', $orderAfterSave))->delay(now()->addSeconds(1));
     }
 }

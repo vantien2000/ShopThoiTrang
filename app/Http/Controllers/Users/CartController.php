@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\CheckoutRequest;
+use App\Jobs\ApiProvincesJob;
 use App\Services\ListService;
+use App\Services\OrderService;
 use App\Services\ProductService;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -16,32 +19,43 @@ class CartController extends Controller
         $this->product = $product;
         $this->list = $list;
     }
-    public function index() {
+    public function index(Request $request) {
         $categories_male = $this->list->showCateUsers(STATUS_ON);
         $categories_female = $this->list->showCateUsers(STATUS_OFF);
         $carts = session('carts');
-        return view('users.carts.index',compact('categories_male', 'categories_female', 'carts'));
+        $address = ApiProvincesJob::dispatchNow();
+        $provinces = $address->pluck('name', 'code');
+        return view('users.carts.index',compact('categories_male', 'categories_female', 'carts', 'provinces'));
     }
     public function addCart(Request $request) {
         $carts = session('carts');
         //Nếu giỏ hàng chưa có
-        $this->validateQuantity($request->quantity, $request->product_id);
         $size = isset($request->size) ? $request->size : config('setup.sizes')[0];
+        $err = '';
         if (empty(session('carts'))) {
             $carts[$request->product_id . '-' .$size] = $this->getCart($request->all());
-            session()->put('carts', $carts);
+            $err = $this->validateQuantity($request->quantity, $request->product_id);
+            if (empty($err)) {
+                session()->put('carts', $carts);
+            }
         }
         else {
             $carts = session('carts');
             if (isset($carts[$request->product_id . '-' .$size])) {
-                $carts[$request->product_id . '-' .$size]['quantity'] += $request->quantity;
-                $this->validateQuantity($carts[$request->product_id . '-' .$size]['quantity'], $request->product_id);
+                $err = $this->validateQuantity($carts[$request->product_id . '-' .$size]['quantity'] + $request->quantity, $request->product_id);
+                if (empty($err)) {
+                    $carts[$request->product_id . '-' .$size]['quantity'] += $request->quantity;
+                }
             } else {
-                $carts[$request->product_id . '-' .$size] = $this->getCart($request->all());
+                $err = $this->validateQuantity($request->quantity, $request->product_id);
+                if (empty($err)) {
+                    $carts[$request->product_id . '-' .$size] = $this->getCart($request->all());
+                }
             }
             session()->put('carts', $carts);
         }
-        return ['cart_count' => count(session('carts'))];
+        $result = !empty($err) ? ['err' => $err] : ['cart_count' => count(session('carts'))];
+        return response()->json($result);
     }
 
     public function updateCart(Request $request) {
@@ -76,9 +90,9 @@ class CartController extends Controller
     public function validateQuantity($quantityInput, $product_id) {
         $quantity = $this->product->quantityProductID($product_id);
         $mgs = '';
-        if ($quantity == 0 || $quantityInput > $quantity) {
+        if ($quantity->quantity == 0 || $quantityInput > $quantity->quantity) {
             $mgs = 'Không đủ hàng!!!';
         }
-        return response()->json(['err' => $mgs]);
+        return $mgs;
     }
 }

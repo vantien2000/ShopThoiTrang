@@ -9,6 +9,9 @@
 @import url(./bootstrap.css);
 @import url(./category.css);
 @import url(./checkout.css);
+@import url(./invoice.css);
+@import url(./profile.css);
+@import url(./animation.css);
 * {
   margin: 0px;
   padding: 0px;
@@ -70,6 +73,10 @@ a:hover {
 
 .f-bolder {
   font-weight: bolder !important;
+}
+
+.error {
+  color: rgb(253, 89, 89);
 }
 
 .master-container {

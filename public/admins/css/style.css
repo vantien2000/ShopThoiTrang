@@ -7555,6 +7555,7 @@ sub {
   color: #abafb3; }
 
 .footer {
+  clear: both;
   padding-left: 15.1875rem;
   background-color: #fff; }
   .footer .copyright {
@@ -8139,8 +8140,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .nk-sidebar {
   width: 15.1875rem;
   padding-bottom: 112px;
-  height: 100%;
   position: absolute;
+  height: 100%;
   top: 5rem;
   padding-top: 0;
   z-index: 99;

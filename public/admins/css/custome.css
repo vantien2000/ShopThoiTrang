@@ -202,3 +202,20 @@
     font-size: 1.5rem;
     cursor: pointer;
 }
+.nk-sidebar {
+    float: left;
+    width: 15.1875rem;
+    padding-bottom: none !important;
+    height: 100vh;
+    overflow: auto;
+    position: none !important;
+    top: 5rem;
+    padding-top: 0;
+    z-index: 99;
+    background: #fff;
+    transition: all .2s ease;
+}
+.footer {
+    padding-left: 0px;
+    background-color: none;
+}

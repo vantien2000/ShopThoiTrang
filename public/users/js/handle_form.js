@@ -36,10 +36,12 @@ $(document).ready(function() {
         'quantity' : quantity
       },
       success: function(res) {
+        console.log(res);
         if(res.err) {
-          Swal.fire(
-            res.message
-          )
+          Swal.fire({
+            icon: 'error',
+            text: res.err,
+          })
         } else {
           Swal.fire({
             position: 'center',
@@ -172,19 +174,28 @@ $(document).ready(function() {
     });
   });
 
-  $('.sort-category > #category_filter_sort , #category_filter').on('change', function(e) {
+  $('.sort-category > #category_filter_sort , #category_filter, #category_filter').on('change', function(e) {
     e.preventDefault();
-    var _form = $(this).serialize()
+    var action = $(this).attr('action');
+    var _data = $(this).serialize();
+    ajaxFilter(action, _data);
+  });
+  $('#category_filter > .btn-reset').on('click', function(e) {
+    var action = $('#category_filter').attr('action');
+    var _data = 'all';
+    ajaxFilter(action, _data);
+  });
+
+  function ajaxFilter(action, _data) {
     $.ajax({
       type: "POST",
-      url: $(this).attr('action'),
-      data: _form,
+      url: action,
+      data: _data,
       success: function(res) {
-        console.log(res);
         $('.product-wrapper-category').html(res);
       }
     })
-  });
+  };
   function formatDate ($time) {
     var date = new Date();
     var dateStr = ("00" + date.getHours()).slice(-2) + ":" +
@@ -194,4 +205,76 @@ $(document).ready(function() {
       date.getFullYear();
     return dateStr;
   }
+
+  $('#districts').html('<option hidden value="">Huyện (*)</option>');
+  $('#wards').html('<option hidden value="">Xã/Phường (*)</option>');
+  $('#provinces').on('change', function(e) {
+    let province_id = $(this).val();
+    let html = '<option hidden value="">Huyện (*)</option>';
+    $.get(location.origin + '/api/provinces/' + province_id, function(res) {
+      for (let districst of res) {
+        html += '<option value="'+ districst['code'] + '">'+ districst['name'] + '</option>';
+      }
+      $('#districts').html(html);
+    })
+  });
+  $('#districts').on('change', function(e) {
+    let province_id = $('#provinces').val();
+    let districts_id = $(this).val();
+    let html = '<option hidden value="">Xã/Phường (*)</option>';
+    $.get(location.origin + '/api/districts/' + province_id + '/' + districts_id, function(res) {
+      for (let ward of res) {
+        html += '<option value="'+ ward['code'] + '">'+ ward['name'] + '</option>';
+      }
+      $('#wards').html(html);
+    })
+  });
+  $('#order_custom').on('submit', function(e) {
+    e.preventDefault();
+    $.post(location.origin + '/postCheckout', $(this).serialize(), function(res) {
+      if (res.error !== undefined) {
+        Swal.fire({
+          title: res.error,
+          showCancelButton: true,
+          confirmButtonText: 'Register',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.href = res.url;
+          } 
+        })
+      }
+
+      if (res.data != undefined) {
+        location.href = res.data;
+      }
+    })
+  });
+  $('.btn-remove-invoice .remove-invoice').on('click', function(e) {
+    e.preventDefault();
+    var order_id = $(this).data('order-id');
+    Swal.fire({
+      title: 'Bạn có chắc chắn?',
+      text: "Bạn muốn xóa đơn hàng này không!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Xóa'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          type: 'POST',
+          url: location.origin + '/remove-invoices',
+          data: {
+            id: order_id,
+          },
+          success: function(res) {
+            if(res.isDelete) {
+              location.href = location.origin + '/invoices';
+            }
+          }
+        });
+      }
+    });
+  });
 });

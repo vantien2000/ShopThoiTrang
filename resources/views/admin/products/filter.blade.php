@@ -1,5 +1,5 @@
 <div class="row">
-    <form action="{{ route('admin.products.filter') }}" method="GET" class="col-lg-8 d-flex justify-content-between align-items-center">
+    <form action="{{ route('admin.products.filter') }}" method="GET" class="col-lg-9 d-flex justify-content-between align-items-center">
         <div class="form-group">
             <input type="search" name="keyword" class="form-control w-20" placeholder="Search Dashboard" aria-label="Search Dashboard">
         </div>
@@ -26,7 +26,7 @@
         </div>
         <button class="form-group btn btn-alert submit">Search</button>
     </form>
-    <div class="col-lg-4 add-link text-right">
+    <div class="col-lg-3 add-link text-right">
         <a href="{{ route('admin.add.products') }}" class="btn btn-primary">Add</a>
     </div>
 </div>

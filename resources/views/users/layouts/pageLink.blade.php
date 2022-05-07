@@ -24,5 +24,14 @@
         <li class="pr-2 pl-2 link"><a href="{{ route('users.category.product', ['id' => $type->categories->category_id]) }}">{{ $type->categories->category_name }}</a></li>
         <li class="pr-2 pl-2 link"><a href="{{ route('users.type.product', ['id' => $type->type_id]) }}">{{ $type->type_name }}</a></li>
         @endif
+        @if ($currentRoute == 'users.invoices')
+        <li class="pr-2">Trang chủ </li>
+        <li class="pr-2 pl-2 link">Đơn Hàng </li>
+        <li class="pr-2 pl-2 link">Hóa Đơn</li>
+        @endif
+        @if ($currentRoute == 'users.profile')
+        <li class="pr-2">Trang chủ </li>
+        <li class="pr-2 pl-2 link">Thông tin cá nhân </li>
+        @endif
     </ul>
 </div>

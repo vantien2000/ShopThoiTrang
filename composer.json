@@ -9,11 +9,14 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "anhskohbo/no-captcha": "^3.4",
         "ckfinder/ckfinder-laravel-package": "^3.5",
         "fideloper/proxy": "^4.4",
+        "guzzlehttp/guzzle": "^7.4",
         "intervention/image": "^2.7",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
+        "maatwebsite/excel": "^3.1",
         "predis/predis": "^1.1"
     },
     "require-dev": {

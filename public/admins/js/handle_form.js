@@ -4,11 +4,13 @@ $(document).ready(function() {
     let deleteType = $('.table-types .delete-btn');
     let deleteProduct = $('.table-products .delete-btn');
     let deleteReview = $('.table-reviews .delete-btn');
+    let deleteInvoice = $('.table-invoice .delete-btn');
 
     handleDelete(deleteCate);
     handleDelete(deleteType);
     handleDelete(deleteProduct);
     handleDelete(deleteReview);
+    handleDelete(deleteInvoice);
 
     function handleDelete(selector) {
       selector.on('click', function(e) {

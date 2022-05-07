@@ -11,8 +11,8 @@
                  <img src="{{ asset('/userfiles/images/users/' . Auth::user()->avatar) }}" width="30px" height="30px" alt="avatar">
                 </a>
                 <div class="dropdown-menu menu-profile" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Thông tin cá nhân</a>
-                  <a class="dropdown-item" href="#">Đơn hàng</a>
+                  <a class="dropdown-item" href="{{ route('users.profile') }}">Thông tin cá nhân</a>
+                  <a class="dropdown-item" href="{{ route('users.invoices') }}">Đơn hàng</a>
                   <a class="dropdown-item" href="{{ route('users.logout') }}">Đăng xuất</a>
                 </div>
             @else
@@ -60,8 +60,8 @@
         </div>
         <div class="cart-header">
             <div class="search-box">
-                <form action="" class="form-search-box">
-                    <input type="text" class="search-input" placeholder="Search">
+                <form action="{{ route('users.search') }}" method="GET" class="form-search-box">
+                    <input type="text" name="keyword" class="search-input" placeholder="Search">
                     <button type="submit" class="icon-search fa fa-search"></button>
                 </form>
             </div>

@@ -6,7 +6,7 @@ $(document).ready(function() {
         rules: {
             email: {
                 required: true,
-                email: true,
+                validate: true,
                 minlength: 10
             },
             password: {
@@ -35,7 +35,7 @@ $(document).ready(function() {
         rules: {
             user_name: {
                 required: true,
-                maxlength: 100
+                maxlength: 32
             },
             age : {
                 required: true,
@@ -97,6 +97,122 @@ $(document).ready(function() {
                 minlength: "mật khẩu không không ít hơn 6 ký tự!!!"
             },
         }
+    });
+
+    $("#order_custom").validate({
+        rules: {
+            email: {
+                required: true,
+                validateEmail: true,
+                minlength: 10
+            },
+            phone_number: {
+                required: true,
+                validatePhone: true
+            },
+            provinces: {
+                required: true
+            },
+            districts: {
+                required: true
+            },
+            wards: {
+                required: true
+            },
+            home_number: {
+                required: true
+            }
+        },
+
+        messages: {
+            email: {
+                required: "Vui lòng nhập email!!!",
+                minlength: "Email không đủ ký tự cho phép!!!",
+                validateEmail: "Email không đúng định dạng!!!"
+            },
+            phone_number: {
+                required: "Vui lòng nhập số điện thoại!!!",
+                validatePhone: "Số điện thoại không hợp lệ!!!"
+            },
+            provinces: {
+                required: "Tỉnh thành không được để trống!!!"
+            },
+            districts: {
+                required: "Quận huyện không được để trống!!!"
+            },
+            wards: {
+                required: "Xã phường không được để trống!!!"
+            },
+            home_number: {
+                required: "Vui lòng nhập số nhà/thôn xóm !!!"
+            }
+        }
+    });
+
+    $("#profile_user_form").validate({
+        rules: {
+            username: {
+                required: true,
+                maxlength: 100
+            },
+            email: {
+                required: true,
+                valdiateEmail: true,
+                minlength: 10
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            confirm: {
+                required: true,
+                minlength: 6
+            },
+            phone_number: {
+                required: true,
+                validatePhone: true
+            },
+            address: {
+                required: true
+            },
+            "g-recaptcha-response": {
+                required: true
+            }
+        },
+
+        messages: {
+            username: {
+                required: "Vui lòng nhập tên người dùng!!!",
+                minlength: "Tên người dùng vượt quá ký tự cho phép!!!",
+            },
+            email: {
+                required: "Vui lòng nhập email!!!",
+                minlength: "Email không đủ ký tự cho phép!!!",
+                validateEmail: "Email không đúng định dạng!!!"
+            },
+            password: {
+                required: "Vui lòng nhập password!!!",
+                minlength: "Password không không ít hơn 6 ký tự!!!"
+            },
+            confirm: {
+                required: "Vui lòng nhập password!!!",
+                minlength: "Password không không ít hơn 6 ký tự!!!"
+            },
+            phone_number: {
+                required: "Vui lòng nhập số điện thoại!!!",
+                validatePhone: "Số điện thoại không hợp lệ!!!"
+            },
+            address: {
+                required: "Vui lòng nhập địa chỉ !!!"
+            },
+            "g-recaptcha-response": {
+                required: "Vui lòng chọn Captcha!!!"
+            }
+        }
+    });
+
+    $.validator.addMethod('validateEmail', function (value, element) {
+        return this.optional(element) || /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(value);
     });
 
     $.validator.addMethod("validatePhone", function (value, element) {

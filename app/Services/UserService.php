@@ -22,8 +22,10 @@ class UserService
         $user = $isUpdate ? $this->userRepository->show($user_id, 'user_id') : [];
         return $user;
     }
-
     public function createUser($data) {
         return $this->userRepository->store($data);
+    }
+    public function getUserOrders($email, $phone_number) {
+        return $this->userRepository->getUserOrders($email, $phone_number);
     }
 }

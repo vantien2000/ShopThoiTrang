@@ -1,0 +1,8 @@
+.invoice {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+}
+.status_order {
+    color: #ffc107;
+}

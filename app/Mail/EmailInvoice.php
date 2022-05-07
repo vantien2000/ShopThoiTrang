@@ -28,8 +28,6 @@ class EmailInvoice extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'))
-        ->view('users.emails.invoice')
-        ->subject($this->data['subject']);
+        return $this->view('users.emails.orders', ['orders' => $this->data]);
     }
 }

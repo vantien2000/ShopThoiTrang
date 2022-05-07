@@ -39,7 +39,7 @@ $(document).ready(function() {
             },
             email: {
                 required: true,
-                email: true,
+                valdiateEmail: true,
                 minlength: 10
             },
             password: {
@@ -63,7 +63,7 @@ $(document).ready(function() {
             email: {
                 required: "Vui lòng nhập email!!!",
                 minlength: "Email không đủ ký tự cho phép!!!",
-                email: "Email không đúng định dạng!!!"
+                validateEmail: "Email không đúng định dạng!!!"
             },
             password: {
                 required: "Vui lòng nhập password!!!",
@@ -77,6 +77,10 @@ $(document).ready(function() {
                 required: "Vui lòng nhập địa chỉ !!!"
             }
         }
+    });
+
+    $.validator.addMethod('validateEmail', function (value, element) {
+        return this.optional(element) || /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(value);
     });
 
     $.validator.addMethod("validatePhone", function (value, element) {

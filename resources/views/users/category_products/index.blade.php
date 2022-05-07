@@ -56,6 +56,7 @@
                         </div>
                         @endforeach
                     </div>
+                    <button type="reset" class="btn btn-dark btn-reset d-none">Xóa</button>
                 </form>
             </div>
             @if (!isset($productsByCategoryId) || !empty($productsByCategoryId))

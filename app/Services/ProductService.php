@@ -46,12 +46,28 @@ class ProductService
         return $this->product->newProducts();
     }
 
+    public function saleProducts() {
+        return $this->product->saleProducts();
+    }
+
+    public function rateProducts() {
+        return $this->product->rateProducts();
+    }
+
     public function productDetail($product_id, $key = PRODUCT_ID_KEY) {
         return $this->product->show($product_id, $key);
     }
 
     public function quantityProductID($product_id, $key = PRODUCT_ID_KEY) {
         return $this->product->getQuantityProduct($product_id, $key);
+    }
+
+    public function changeQuantityProduct($product_id, $key = PRODUCT_ID_KEY, $newQuantity) {
+        return $this->product->changeQuantityProduct($product_id, $key, $newQuantity);
+    }
+
+    public function productCategoryType($category_type) {
+        return $this->product->getProductsByCategoryType($category_type);
     }
 
     public function productsCategory($category_id) {
@@ -64,5 +80,13 @@ class ProductService
 
     public function filterProductUser($filter, $id) {
         return $this->product->filterProductUser($filter, $id);
+    }
+
+    public function filterProductSearch($filter) {
+        return $this->product->filterProductSearch($filter);
+    }
+
+    public function search($keyword) {
+        return $this->product->search($keyword);
     }
 }

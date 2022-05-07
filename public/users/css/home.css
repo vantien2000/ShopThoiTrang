@@ -38,6 +38,7 @@
     margin-top: 10px;
     margin-right: 100px;
     padding: 0;
+    transform: translate3d(1160px, 32px, 0px) !important;
 }
 
 .header-bottom {
@@ -147,6 +148,10 @@
 .top-navbar li {
     padding-right: 10px;
     margin-bottom: 10px;
+}
+.top-navbar li.active a {
+    color: rgb(255, 220, 104);
+    border-bottom: 1px solid rgb(255, 220, 104);
 }
 .top-navbar li a {
     font-size: 2rem;
@@ -286,6 +291,11 @@
 .middle .menu-category {
     padding-right: 1%;
     padding-bottom: 5px;
+}
+.middle .menu-category > a.active {
+    color: rgb(255, 190, 104);
+    background-color: #fff;
+    border: 1px solid rgb(255, 190, 104);
 }
 .middle .menu-category > .nav-link {
     background-color: rgb(255, 190, 104);

@@ -11,7 +11,7 @@
                 <div class="col-lg-5 col-xl-4">
                     <div class="shadow-sm rounded bg-white p-4 mb-4">
                         <div class="d-flex align-items-center mb-4">
-                            <img class="mr-3" src="{{ asset('/admins/images/' . $admin->avatar) }}" width="80" height="80" alt="">
+                            <img class="mr-3" src="{{ asset('/userfiles/images/users/' . $admin->avatar) }}" width="80" height="80" alt="">
                             <div class="media-body">
                                 <h3 class="mb-0">{{ $admin->user_name }}</h3>
                                 <p class="text-muted mb-0">Developer</p>

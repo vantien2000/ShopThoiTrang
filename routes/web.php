@@ -55,6 +55,16 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     //Reviews
     Route::get('reviews','Admin\ReviewController@index')->name('admin.reviews');
     Route::get('/delete-review/{id}', 'Admin\ReviewController@deleteReviews')->name('admin.delete.reviews');
+    // invoices
+    Route::get('invoices','Admin\InvoiceController@index')->name('admin.invoices');
+    Route::get('filter/invoices','Admin\InvoiceController@index')->name('admin.invoices.filter');
+    Route::get('edit-invoices/{id}','Admin\InvoiceController@edit')->name('admin.edit.invoices');
+    Route::post('edit/invoice/{id}','Admin\InvoiceController@postEdit')->name('admin.edit.invoices.post');
+    Route::get('delete/invoice/{id}','Admin\InvoiceController@delete')->name('admin.delete.invoices');
+    //statictis
+    Route::get('/statistic','Admin\StatisticController@index')->name('admin.statistic');
+    Route::get('filter/statistic','Admin\StatisticController@index')->name('admin.statistic.filter');
+    Route::get('statistic/export','Admin\StatisticController@export')->name('admin.statistic.export');
     //ckeditor
     Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
     ->name('ckfinder_connector');
@@ -64,6 +74,8 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::get('/', 'Users\HomeController@index')->name('users.home');
+    Route::get('/search/{keyword?}', 'Users\HomeController@search')->name('users.search');
+    Route::post('/search_filter', 'Users\HomeController@filter')->name('users.search.filter');
     Route::get('/login', 'Users\LoginController@login')->name('users.login');
     Route::get('/logout', 'Users\LoginController@logout')->name('users.logout');
     Route::get('/register', 'Users\LoginController@register')->name('users.register');
@@ -75,8 +87,14 @@ Route::prefix('/')->group(function () {
     Route::post('/cart/add-to-cart', 'Users\CartController@addCart')->name('users.add.cart');
     Route::post('/cart/update-cart', 'Users\CartController@updateCart')->name('users.update.cart');
     Route::post('/cart/delete-cart', 'Users\CartController@deleteCart')->name('users.delete.cart');
+    Route::get('/banking', 'Users\CheckoutController@banking')->name('users.banking');
+    Route::post('/postCheckout', 'Users\CheckoutController@checkout')->middleware('cors')->name('users.post.checkout');
     Route::get('/categories/{id}', 'Users\CategoryController@index')->name('users.category.product');
     Route::post('/filter_categories/{id}', 'Users\CategoryController@filterCategory')->name('users.category.filter');
     Route::get('/types/{id}', 'Users\CategoryController@typeProducts')->name('users.type.product');
     Route::post('/filter_types/{id}', 'Users\CategoryController@filterCategory')->name('users.type.filter');
+    Route::get('invoices', 'Users\InvoicesController@index')->name('users.invoices');
+    Route::post('remove-invoices', 'Users\InvoicesController@remove')->name('users.invoices.delete');
+    Route::get('/profile', 'Users\HomeController@profile')->name('users.profile');
+    Route::post('/update-profile', 'Users\HomeController@updateProfile')->name('users.post.profile');
 });

@@ -30,4 +30,8 @@ class UserRepository extends RepositoryAbstract
         }
         return $users->where('user_data.type', USER_TYPE)->paginate(5);
     }
+
+    public function getUserOrders($email, $phone_number) {
+        return $this->modal->where('email', $email)->where('phone_number', $phone_number)->first();
+    }
 }

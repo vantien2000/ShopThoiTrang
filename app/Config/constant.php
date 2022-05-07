@@ -23,6 +23,10 @@
         define('TYPE_ID_KEY', 'type_id');
     }
 
+    if (!defined("ORDER_ID_KEY")) {
+        define('ORDER_ID_KEY', 'order_id');
+    }
+
     if (!defined("STATUS_ON")) {
         define('STATUS_ON', 1);
     }
@@ -45,5 +49,13 @@
 
     if (!defined("DEFAULT_SHIP_COST")) {
         define("DEFAULT_SHIP_COST", 40000);
+    }
+
+    if (!defined("PAY_COD")) {
+        define("PAY_COD", 0);
+    }
+
+    if (!defined("BANKING")) {
+        define("BANKING", 1);
     }
 ?>

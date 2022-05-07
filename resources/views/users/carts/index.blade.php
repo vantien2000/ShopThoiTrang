@@ -24,7 +24,7 @@
                         <td><input class="quantity" type="number" data-product-id="{{ $cart['products']['product_id'] }}" data-size="{{ $cart['size'] }}" id="quantity" value="{{ $cart['quantity'] }}" min="1" max="{{ $cart['products']['quantity'] }}"></td>
                         <td><span class="price total-{{ $key }}">{{ number_format(price_sale($cart['products']['price'], $cart['products']['sale']) * $cart['quantity'],  0, ',', '.') }}</span><sup>vnđ</sup></td>
                         <td><button data-key={{ $key }} class="remove_btn"><i class="fa fa-times"></i></button></td>
-                    </tr> 
+                    </tr>
                     @endforeach
                 </table>
             </div>
@@ -47,6 +47,9 @@
                     <div class="total d-flex">
                         <div class="total-title">Tổng Tiền:</div>
                         <span>{{ number_format($shipCost + sub_total($carts), 0, ',', '.') }} <sup>vnđ</sup></span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="#checkout" class="btn_pay">THANH TOÁN</a>
                     </div>
                 </div>
                 <div class="continue-shop">

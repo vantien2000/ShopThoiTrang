@@ -1,3 +1,8 @@
+$(function(){
+    $('.datepicker').datepicker({
+       format: 'mm-dd-yyyy'
+     });
+ });
 var length = $('.product-category .product').length;
 var current = 0;
 $(document).on('click', '.btn-next-middle' , '.btn-prev-middle', function() {
@@ -28,6 +33,34 @@ function slideShowPrev(index) {
 }
 
 $(document).ready(function() {
+    $('.top-navbar .nav-item').on('click', function (e) {
+        $('.top-navbar .nav-item').removeClass('active');
+        $(this).addClass('active');
+        $('.top .product-wrapper').addClass('d-none');
+        if ($(this).hasClass('new_link')) {
+            $('.new_product_top').removeClass('d-none');
+        }
+        if ($(this).hasClass('sale_link')) {
+            $('.sale_product_top').removeClass('d-none');
+        }
+        if ($(this).hasClass('rate_link')) {
+            $('.rate_product_top').removeClass('d-none');
+        }
+    });
+    $('.middle-right .menu-category .nav-link').on('click', function (e) {
+        $('.middle-right .menu-category .nav-link').removeClass('active');
+        $(this).addClass('active');
+        $('.middle .middle-left').addClass('d-none');
+        $('.middle .middle-right .product-category').addClass('d-none');
+        if ($(this).hasClass('female_link')) {
+            $('.female_image_first').removeClass('d-none');
+            $('.female_category_products').removeClass('d-none');
+        }
+        if ($(this).hasClass('male_link')) {
+            $('.male_image_first').removeClass('d-none');
+            $('.male_category_products').removeClass('d-none');
+        }
+    });
     $('.sizes').on('click', '.size-element input', function(e) {
         $('.size-element label').removeClass('active');
         if ($('.size-element input').is(':checked')) {
@@ -45,6 +78,16 @@ $(document).ready(function() {
     $('.btn-addition-infor').on('click', function() {
         $('.additional-information').toggleClass('d-block d-none');
         $(this).toggleClass('fa-minus fa-plus');
+    });
+    $('.upload-avatar #avatar').on('change', function(e) {
+        $('.avatar_image').attr('src', URL.createObjectURL(e.target.files[0]));
+    });
+    $('#category_filter').on('change', function(e) {
+        $('.btn-reset').removeClass('d-none');
+    });
+    $('.btn-reset').on('click', function(e) {
+        $('.btn-reset').addClass('d-none');
+        $('.type-filter-element > label').removeClass('active');
     });
 });
 
