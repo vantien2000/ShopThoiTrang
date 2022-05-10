@@ -44,12 +44,6 @@
                     <i class="icon-handbag menu-icon"></i> <span class="nav-text">Hóa đơn</span>
                 </a>
             </li>
-            <li class="nav-label">statistic</li>
-            <li>
-                <a href="{{ route('admin.statistic') }}" aria-expanded="false">
-                    <i class="icon-chart menu-icon"></i> <span class="nav-text">Thống kê</span>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

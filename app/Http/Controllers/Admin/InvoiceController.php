@@ -46,4 +46,10 @@ class InvoiceController extends Controller
         $isDelete = $this->orders->deleteOrder($order_id, ORDER_ID_KEY);
         return response()->json(['deleted' => $isDelete, 'message' => 'Xóa Thành Công!!!']);
     }
+
+    public function details(Request $request) {
+        $order_id = $request->id;
+        $orders = $this->orders->showOrder($order_id, ORDER_ID_KEY);
+        return view('admin.invoices.details', compact('orders'));
+    }
 }

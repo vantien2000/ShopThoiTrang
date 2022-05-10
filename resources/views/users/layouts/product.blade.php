@@ -21,6 +21,6 @@
     @endif
 </div>
 <div class="btn-product">
-    <a href="javascript:void(0)" data-product-id="{{ $product->product_id }}" data-quantity="1" class="btn btn-add-cart col-sm-6 bg-info"><i class="fa fa-shopping-cart"></i>Đặt hàng</a>
+    <a href="javascript:void(0)" data-product-id="{{ $product->product_id }}" data-quantity="1" data-size="{{ $product->size }}" class="btn btn-add-cart col-sm-6 bg-info"><i class="fa fa-shopping-cart"></i>Đặt hàng</a>
     <a href="" class="btn col-sm-6 bg-warning"><i class="fa fa-eye"></i>Xem Nhanh</a>
 </div>

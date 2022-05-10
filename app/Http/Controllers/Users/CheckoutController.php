@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\CheckoutRequest;
 use App\Jobs\ApiProvincesJob;
 use App\Jobs\SendMailInvoice;
+use App\Mail\EmailInvoice;
 use App\Services\OrderService;
 use App\Services\ProductService;
 use App\Services\UserService;
 use CKSource\CKFinder\Backend\Backend;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 
 class CheckoutController extends Controller
@@ -66,7 +68,7 @@ class CheckoutController extends Controller
             }
             session()->forget('carts');
             session()->forget('result');
-            dispatch(new SendMailInvoice($request->email, $orderAfterSave))->delay(now()->addSeconds(1));
+            Mail::to($request->email)->send(new EmailInvoice($orderAfterSave));
             $result = !empty($result) ? $result : ['url' => route('users.home')];
             return response()->json($result);
         }

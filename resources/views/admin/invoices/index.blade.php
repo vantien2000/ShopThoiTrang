@@ -45,7 +45,9 @@
                                                     <span class="text-success f-bolder">Hoàn thành</span>
                                                 @endif
                                             </td>
-                                            <td scope="col"><a data-toggle="tooltip" href="{{ route('admin.edit.invoices', ['id' => $invoice->order_id]) }}" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+                                            <td scope="col">
+                                                <a href="{{ route('admin.invoices.details', ['id' => $invoice->order_id]) }}"  class="detail-btn" data-toggle="tooltip" data-placement="top" title="detail"><i class="fa fa-eye color-muted m-r-5"></i> </a>
+                                                <a data-toggle="tooltip" href="{{ route('admin.edit.invoices', ['id' => $invoice->order_id]) }}" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
                                                 <a href="javascript:void(0)" data-delete-url="{{ route('admin.delete.invoices', ['id' => $invoice->order_id]) }}" data-order-id="{{ $invoice->order_id }}" class="delete-btn" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span></td>
                                         </tr>
                                         @endforeach

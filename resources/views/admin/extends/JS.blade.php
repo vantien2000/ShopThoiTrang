@@ -11,4 +11,6 @@ Scripts
 <script src="{{ asset('admins/js/custom.min.js') }}"></script>
 <script src="{{ asset('admins/js/plugins-init/chartjs.js') }}"></script>
 <script src="{{ asset('admins/js/chart.js') }}"></script>
+<script src="{{ asset('admins/js/plugins-init/datatable.js') }}"></script>
+<script src="{{ asset('admins/js/plugins-init/jquery-print.js') }}"></script>
 @include('ckfinder::setup')

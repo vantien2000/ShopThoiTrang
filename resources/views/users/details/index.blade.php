@@ -31,6 +31,9 @@
                         <div class="sale">
                             Tiết kiệm: {{  number_format(($product->price * $product->sale / 100), 0, ',', '.') }} <sup>vnđ</sup><span class="product-sale">-{{ $product->sale }}%</span>
                         </div>
+                        <div class="">
+                            Hiện có: {{ $product->quantity }} (sản phẩm)
+                        </div>
                         <hr>
                         <form action="{{ route('users.add.cart') }}" method="POST" id="form-detail">
                             @csrf
@@ -49,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="quantity f-bolder">
-                                Số lượng: <input name="quantity" class="quantity-product d-inline-block" width="30px" value="{{ $product->quantity }}" type="number" min="0" max="{{ $product->quantity }}">
+                                Số lượng: <input name="quantity" class="quantity-product d-inline-block" width="30px" value="1" type="number" min="1" max="{{ $product->quantity }}">
                             </div>
                             <div class="add-to-cart">
                                 <button type="submit" class="btn btn-dark">THÊM VÀO GIỎ HÀNG</button>

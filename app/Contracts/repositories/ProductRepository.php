@@ -57,7 +57,7 @@ class ProductRepository extends RepositoryAbstract
         return $this->modal->where('products.status', '=', STATUS_ON)->where('products.quantity', '>', STATUS_OFF)->orderByRaw('products.product_id desc')->limit(5)->get();
     }
 
-    public function getQuantityProduct($product_id, $key) {
+    public function getProduct($product_id, $key) {
         return $this->modal->where($key, $product_id)->first();
     }
 

@@ -58,8 +58,8 @@ class ProductService
         return $this->product->show($product_id, $key);
     }
 
-    public function quantityProductID($product_id, $key = PRODUCT_ID_KEY) {
-        return $this->product->getQuantityProduct($product_id, $key);
+    public function quantityID($product_id, $key = PRODUCT_ID_KEY) {
+        return $this->product->getProduct($product_id, $key);
     }
 
     public function changeQuantityProduct($product_id, $key = PRODUCT_ID_KEY, $newQuantity) {

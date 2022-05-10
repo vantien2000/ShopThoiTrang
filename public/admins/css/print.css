@@ -1,0 +1,10 @@
+@media print {
+    .content-print {
+        display: block;
+        text-align: center;
+    }
+
+    .invoice_infor {
+        text-align: left;
+    }
+}

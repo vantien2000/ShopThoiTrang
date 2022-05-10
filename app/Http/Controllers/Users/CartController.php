@@ -34,7 +34,7 @@ class CartController extends Controller
         $err = '';
         if (empty(session('carts'))) {
             $carts[$request->product_id . '-' .$size] = $this->getCart($request->all());
-            $err = $this->validateQuantity($request->quantity, $request->product_id);
+            $err = $this->validateCart($request->quantity, $request->product_id, $size);
             if (empty($err)) {
                 session()->put('carts', $carts);
             }
@@ -42,12 +42,12 @@ class CartController extends Controller
         else {
             $carts = session('carts');
             if (isset($carts[$request->product_id . '-' .$size])) {
-                $err = $this->validateQuantity($carts[$request->product_id . '-' .$size]['quantity'] + $request->quantity, $request->product_id);
+                $err = $this->validateCart($carts[$request->product_id . '-' .$size]['quantity'] + $request->quantity, $request->product_id, $size);
                 if (empty($err)) {
                     $carts[$request->product_id . '-' .$size]['quantity'] += $request->quantity;
                 }
             } else {
-                $err = $this->validateQuantity($request->quantity, $request->product_id);
+                $err = $this->validateCart($request->quantity, $request->product_id, $size);
                 if (empty($err)) {
                     $carts[$request->product_id . '-' .$size] = $this->getCart($request->all());
                 }
@@ -63,7 +63,7 @@ class CartController extends Controller
         $size = isset($request->size) ? $request->size : config('setup.sizes')[0];
         if(isset($carts[$request->product_id . '-' .$size])) {
             $carts[$request->product_id . '-' . $size]['quantity'] = $request->quantity;
-            $this->validateQuantity($request->product_id, $carts[$request->product_id . '-' .$size]['quantity']);
+            $this->validateCart($request->product_id, $carts[$request->product_id . '-' .$size]['quantity'], $size);
             session()->put('carts', $carts);
         }
         return session('carts');
@@ -87,11 +87,14 @@ class CartController extends Controller
         return $cart;
     }
 
-    public function validateQuantity($quantityInput, $product_id) {
-        $quantity = $this->product->quantityProductID($product_id);
+    public function validateCart($quantityInput, $product_id, $sizeInput) {
+        $product = $this->product->getProductById($product_id);
         $mgs = '';
-        if ($quantity->quantity == 0 || $quantityInput > $quantity->quantity) {
+        if ($product->quantity == 0 || $quantityInput > $product->quantity) {
             $mgs = 'Không đủ hàng!!!';
+        }
+        if ($product->size != $sizeInput) {
+            $mgs = 'Sản phẩm không tồn tại';
         }
         return $mgs;
     }

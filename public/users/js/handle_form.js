@@ -28,12 +28,14 @@ $(document).ready(function() {
     e.preventDefault();
     var product_id = $(this).data('product-id');
     var quantity = $(this).data('quantity');
+    var size = $(this).data('size');
     $.ajax({
       type: 'POST',
       url: location.origin + '/cart/add-to-cart',
       data: {
         'product_id' : product_id,
-        'quantity' : quantity
+        'quantity' : quantity,
+        'size' : size
       },
       success: function(res) {
         console.log(res);
@@ -156,7 +158,7 @@ $(document).ready(function() {
       success: function(res) {
         if(res.err) {
           Swal.fire(
-            res.message
+            res.err
           )
         } else {
           Swal.fire({

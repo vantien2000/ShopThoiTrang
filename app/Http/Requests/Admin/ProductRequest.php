@@ -29,7 +29,7 @@ class ProductRequest extends FormRequest
             'image' => 'required|string',
             'price' => 'required|numeric|min:10000',
             'sale'  => 'regex:/^\d+(\.\d{1,2})?$/|max:90',
-            'quantity' => 'required|integer|max:50',
+            'quantity' => 'required|integer|max:200',
         ];
     }
 

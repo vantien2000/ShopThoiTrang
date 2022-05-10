@@ -57,14 +57,13 @@ Route::prefix('admin')->middleware('auth_admin')->group(function () {
     Route::get('/delete-review/{id}', 'Admin\ReviewController@deleteReviews')->name('admin.delete.reviews');
     // invoices
     Route::get('invoices','Admin\InvoiceController@index')->name('admin.invoices');
+    Route::get('invoices/{id}','Admin\InvoiceController@details')->name('admin.invoices.details');
     Route::get('filter/invoices','Admin\InvoiceController@index')->name('admin.invoices.filter');
     Route::get('edit-invoices/{id}','Admin\InvoiceController@edit')->name('admin.edit.invoices');
     Route::post('edit/invoice/{id}','Admin\InvoiceController@postEdit')->name('admin.edit.invoices.post');
     Route::get('delete/invoice/{id}','Admin\InvoiceController@delete')->name('admin.delete.invoices');
-    //statictis
-    Route::get('/statistic','Admin\StatisticController@index')->name('admin.statistic');
-    Route::get('filter/statistic','Admin\StatisticController@index')->name('admin.statistic.filter');
-    Route::get('statistic/export','Admin\StatisticController@export')->name('admin.statistic.export');
+    // //statictis
+    // Route::get('statistic/export','Admin\StatisticController@export')->name('admin.statistic.export');
     //ckeditor
     Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
     ->name('ckfinder_connector');

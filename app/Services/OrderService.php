@@ -17,6 +17,7 @@ class OrderService
         $this->orderDetailsRepository = $orderDetailsRepository;
         $this->orderRepository = $orderRepository;
     }
+    
 
     public function showOrder($id, $key = ORDER_ID_KEY) {
         return $this->orderRepository->showOrder($id, $key);
@@ -66,7 +67,31 @@ class OrderService
         return $this->orderRepository->getTotalOrdersInMonth($month);
     }
 
-    public function getTotalProductsOrdersInTheMonths() {
-        return $this->orderRepository->getTotalProductOrderInTheMonths();
+    public function getTotalOrders($day) {
+        return $this->orderRepository->getTotalOrders($day);
+    }
+
+    public function getTotalQuantityProductsInDay($day) {
+        return $this->orderRepository->getTotalQuantityProductsInDay($day);
+    }
+
+    public function getTotalOrdersInDay($day) {
+        return $this->orderRepository->getTotalOrdersInDay($day);
+    }
+
+    public function getTotalProductsOrdersInTheMonths($month) {
+        return $this->orderRepository->getTotalProductOrderInTheMonths($month);
+    }
+
+    public function getDataChartLeft($year) {
+        return $this->orderRepository->getDataChartLeft($year);
+    }
+
+    public function getDataChartRight($day) {
+        return $this->orderRepository->getDataChartRight($day);
+    }
+
+    public function sellProducts($day) {
+        return $this->orderRepository->sellProducts($day);
     }
 }

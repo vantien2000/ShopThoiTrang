@@ -62,6 +62,25 @@ class OrderRepository extends RepositoryAbstract
         return $orders->paginate(5);
     }
 
+    public function getDataChartLeft($year) {
+        return $this->modal->select(DB::raw('month(orders.order_date) as month, sum(order_details.quantity * products.price * (1 - 1/products.sale)) as total, sum(order_details.quantity) as quantity'))
+        ->leftJoin('order_details', 'order_details.order_id', '=', 'orders.order_id')
+        ->leftJoin('products', 'products.product_id', '=', 'order_details.product_id')
+        ->where(DB::raw('YEAR(orders.order_date)'), '=' , $year)
+        ->where('result', '!=', 0)
+        ->groupBy(DB::raw('month(orders.order_date)'))
+        ->get();
+    }
+
+    public function getDataChartRight($day) {
+        $total= $this->modal->where(DB::raw('orders.order_date'), '=' , $day)->get()->count();
+        $orderClosed = $this->modal->where(DB::raw('orders.order_date'), '=' , $day)->where('orders.result', 0)->get()->count();
+        $orderPending = $this->modal->where(DB::raw('orders.order_date'), '=' , $day)->where('orders.result', 1)->get()->count();
+        $orderFinished = $this->modal->where(DB::raw('orders.order_date'), '=' , $day)->where('orders.result', 2)->get()->count();
+        $arr = $total == 0 ? [0,0,0] : [round($orderClosed *100/$total, 0), round($orderPending *100/$total, 0), round($orderFinished *100/$total, 0)];
+        return $arr;
+    }
+
     public function filterInvoices($filter) {
         $invoice = $this->modal->select(DB::raw('month(orders.order_date) as month, sum(order_details.quantity * products.price * (1 - 1/products.sale)) as total, sum(order_details.quantity) as quantity'))
         ->leftJoin('order_details', 'order_details.order_id', '=', 'orders.order_id')
@@ -75,20 +94,61 @@ class OrderRepository extends RepositoryAbstract
         return $invoice->get();
     }
 
+    public function sellProducts($day) {
+        return $this->orderDetails->select(DB::raw('products.*, sum(order_details.quantity) as total'))
+        ->leftJoin('orders', 'orders.order_id', '=', 'order_details.order_id')
+        ->leftJoin('products', 'products.product_id', '=', 'order_details.product_id')
+        ->where(DB::raw("month(orders.order_date)"), '=' , (int)$day)
+        ->where(DB::raw("year(orders.order_date)"), '=' , (int)date_format(now(), "Y"))
+        ->where('orders.result', '!=', 0)
+        ->groupBy('order_details.product_id')
+        ->orderByRaw(DB::raw('total desc'))
+        ->get();
+    }
+
+    public function getTotalOrders($day) {
+        return $this->modal->where(DB::raw('orders.order_date'), '=' , $day)
+        ->get();
+    }
+
+    public function getTotalQuantityProductsInDay($day) {
+        return $this->modal->select(DB::raw('orders.order_date as day, sum(order_details.quantity) as quantity'))
+        ->leftJoin('order_details', 'order_details.order_id', '=', 'orders.order_id')
+        ->leftJoin('products', 'products.product_id', '=', 'order_details.product_id')
+        ->where(DB::raw('orders.order_date'), '=' , $day)
+        ->where('result', '!=', 0)
+        ->groupBy(DB::raw('orders.order_date'))
+        ->get();
+    }
+
+    public function getTotalOrdersInDay($day) {
+        return $this->modal->select(DB::raw('orders.order_date as day, sum(order_details.quantity * products.price * (1 - 1/products.sale)) as total'))
+        ->leftJoin('order_details', 'order_details.order_id', '=', 'orders.order_id')
+        ->leftJoin('products', 'products.product_id', '=', 'order_details.product_id')
+        ->where(DB::raw('orders.order_date'), '=' , $day)
+        ->where('result', '!=', 0)
+        ->groupBy(DB::raw('orders.order_date'))
+        ->get();
+    }
+
+
     public function getTotalOrdersInMonth($month) {
         return $this->modal->select(DB::raw('month(orders.order_date) as month, sum(order_details.quantity * products.price * (1 - 1/products.sale)) as total'))
         ->leftJoin('order_details', 'order_details.order_id', '=', 'orders.order_id')
         ->leftJoin('products', 'products.product_id', '=', 'order_details.product_id')
         ->where(DB::raw('month(orders.order_date)'), '=' , $month)
+        ->where('result', '!=', 0)
         ->groupBy(DB::raw('month(orders.order_date)'))
         ->get();
     }
 
-    public function getTotalProductOrderInTheMonths() {
-        return $this->modal->select(DB::raw('month(orders.order_date) as month, sum(order_details.quantity * products.price * (1 - 1/products.sale)) as total, sum(order_details.quantity) as quantity'))
+    public function getTotalProductOrderInTheMonths($month) {
+        return $this->modal->select(DB::raw('orders.order_date, count(products.product_id) as quantity_product, sum(order_details.quantity * products.price * (1 - 1/products.sale)) as total,  sum(order_details.quantity) as quantity_order'))
         ->leftJoin('order_details', 'order_details.order_id', '=', 'orders.order_id')
         ->leftJoin('products', 'products.product_id', '=', 'order_details.product_id')
-        ->groupBy(DB::raw('month(orders.order_date)'))
+        ->where(DB::raw('month(orders.order_date)'), '=', $month)
+        ->where('orders.result', '!=', 0)
+        ->groupBy(DB::raw('orders.order_date'))
         ->get();
     }
     // public function getTotalProductsOrderInYear() {

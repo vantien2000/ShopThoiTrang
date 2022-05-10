@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    $('.table-sellProducts, .table-sales').DataTable({
+        pageLength : 5,
+        searching: false, info: false,
+        bLengthChange: false
+     });
     var html = $('.image-preview');   
     $('.image-preview-block').html(html);
 
@@ -41,6 +46,11 @@ $(document).ready(function() {
     $(document).on('click', '.modal .close-img-modal', function() {
         $('.modal').removeClass('d-flex');
         $('.modal').addClass('d-none');
+    });
+
+    $('.btn-print').on('click', function(e) {
+        e.preventDefault();
+        $.print('.content-print');
     });
 
     ckeditor('test');
