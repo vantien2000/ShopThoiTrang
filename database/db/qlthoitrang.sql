@@ -46,7 +46,7 @@ create table user_data (
 );
 
 create table reviews (
-	review_id int(11) primary key auto_increment  null,
+	review_id int(11) primary key auto_increment not null,
     rate float,
     review_content text not null,
     product_id int(11) not null DEFAULT 0,
@@ -126,7 +126,7 @@ values ('Áo sơ mi caro xám (M001)', 'ao_so_mi_caro_xam.webp', '15', 500000, '
 ('Áo sơ mi nam (SMM-N688)', 'ao_so_mi_nam_(SMM-N688).webp', '50', 600000, '', 50, 'L', '', 2, 4, 1),
 ('Áo sơ mi nam dài tay basic (4SMDB003DEN)', 'ao_so_mi_nam_dai_tay_basis_4SMDB003DEN.webp', '30', 800000, '', 60, 'L', '', 1, 4, 1),
 ('Áo sơ mi nam REGULAR FIT AVAFashion NBCSE', 'ao_so_mi_nam_REGULAR_FIT_AVAFashion_NBCSE.webp', '40', 800000, '', 80, 'XL', '', 1, 4, 1),
-('Áo sơ mi nữ thanh mảnh', 'ao_so_mi_nu_thanh_manh.webp', '15', 600000, '', 100, 'M', '', 13, 5, 1),
+('Áo sơ mi nữ thanh mảnh', 'ao_so_mi_nu_thanh_manh.webp', '15', 600000, '', 100, 'M', '', 12, 5, 1),
 ('Áo sơ mi trắng họa tiết nam (4SMCH011TRT)', 'ao_so_mi_trang_hoa_tiet_nam_4SMCH011TRT.webp', '20', 500000, '', 100, 'L', '', 2, 5, 1),
 ('Chân váy bút chì bộ cổ điển', 'chan_vay_but_chi_bo_coi_dich.webp', '30', 800000, '', 120, 'M', '', 8, 5, 1),
 ('Chân váy bút chì cúc kim loại', 'chan_vay_but_chi_cuc_kim_loai_Size_L.webp', '30', 800000, '', 20, 'L', '', 8, 5, 1),
@@ -138,7 +138,7 @@ values ('Áo sơ mi caro xám (M001)', 'ao_so_mi_caro_xam.webp', '15', 500000, '
 ('Đầm suông tay lỡ', 'dam_suong_tay_lo.webp', '50', 500000, '', 10, 'M', '', 5, 5, 1);
 
 insert into products(product_name, image, sale, price, description, quantity, size, add_infor, type_id, rate, status)
-values ('Đầm xòe cổ đức đính cúc', 'dam_xoe_co_duc_dinh_cuc.webp', '40', 800000, '', 30, 'M', '', 9, 5, 1);
+values ('Đầm xòe cổ đức đính cúc', 'dam_xoe_co_duc_dinh_cuc.webp', '40', 800000, '', 30, 'M', '', 10, 5, 1);
 
 insert into products(product_name, image, sale, price, description, quantity, size, add_infor, type_id, rate, status)
 values ('Đầm xòe họa tiết hoa hồng', 'dam_xoe_hoa_tiet_hoe_hong.webp', 20, 400000 , '', 20 ,'M', '', 10, 5, 1);
