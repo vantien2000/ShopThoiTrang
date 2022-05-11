@@ -1,0 +1,56 @@
+2022-05-11T13:38:19.381766Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2022-05-11T13:38:19.382553Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2022-05-11T13:38:19.382579Z 0 [Note] E:\laragon\bin\mysql\mysql-5.7.33-winx64\bin\mysqld (mysqld 5.7.33) starting as process 13980 ...
+2022-05-11T13:38:19.427079Z 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2022-05-11T13:38:19.431566Z 0 [Note] InnoDB: Uses event mutexes
+2022-05-11T13:38:19.432907Z 0 [Note] InnoDB: _mm_lfence() and _mm_sfence() are used for memory barrier
+2022-05-11T13:38:19.434958Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2022-05-11T13:38:19.436821Z 0 [Note] InnoDB: Number of pools: 1
+2022-05-11T13:38:19.437868Z 0 [Note] InnoDB: Not using CPU crc32 instructions
+2022-05-11T13:38:19.444242Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2022-05-11T13:38:19.474442Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2022-05-11T13:38:19.533451Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+2022-05-11T13:38:19.630895Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2022-05-11T13:38:19.632289Z 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2022-05-11T13:38:19.661332Z 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2022-05-11T13:38:19.673314Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2022-05-11T13:38:19.674666Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2022-05-11T13:38:19.676170Z 0 [Note] InnoDB: Waiting for purge to start
+2022-05-11T13:38:19.733237Z 0 [Note] InnoDB: 5.7.33 started; log sequence number 2746840
+2022-05-11T13:38:19.734501Z 0 [Note] InnoDB: Loading buffer pool(s) from E:\DoAn\ShopFashion\public\mysql\ib_buffer_pool
+2022-05-11T13:38:19.734725Z 0 [Note] Plugin 'FEDERATED' is disabled.
+2022-05-11T13:38:19.752031Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+2022-05-11T13:38:19.753767Z 0 [Note] Skipping generation of SSL certificates as certificate files are present in data directory.
+2022-05-11T13:38:19.757538Z 0 [Warning] CA certificate ca.pem is self signed.
+2022-05-11T13:38:19.758748Z 0 [Note] Skipping generation of RSA key pair as key files are present in data directory.
+2022-05-11T13:38:19.759884Z 0 [Note] InnoDB: Buffer pool(s) load completed at 220511 20:38:19
+2022-05-11T13:38:19.760635Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+2022-05-11T13:38:19.762541Z 0 [Note] IPv6 is available.
+2022-05-11T13:38:19.763189Z 0 [Note]   - '::' resolves to '::';
+2022-05-11T13:38:19.764073Z 0 [Note] Server socket created on IP: '::'.
+2022-05-11T13:38:19.820044Z 0 [Note] Event Scheduler: Loaded 0 events
+2022-05-11T13:38:19.820977Z 0 [Note] E:\laragon\bin\mysql\mysql-5.7.33-winx64\bin\mysqld: ready for connections.
+Version: '5.7.33'  socket: ''  port: 3306  MySQL Community Server (GPL)
+2022-05-11T15:38:01.175590Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2022-05-11T15:38:01.239981Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2022-05-11T15:38:01.240007Z 0 [Note] E:\laragon\bin\mysql\mysql-5.7.33-winx64\bin\mysqld (mysqld 5.7.33) starting as process 17396 ...
+2022-05-11T15:38:01.284424Z 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2022-05-11T15:38:01.285598Z 0 [Note] InnoDB: Uses event mutexes
+2022-05-11T15:38:01.286347Z 0 [Note] InnoDB: _mm_lfence() and _mm_sfence() are used for memory barrier
+2022-05-11T15:38:01.287509Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2022-05-11T15:38:01.288906Z 0 [Note] InnoDB: Number of pools: 1
+2022-05-11T15:38:01.289889Z 0 [Note] InnoDB: Not using CPU crc32 instructions
+2022-05-11T15:38:01.298306Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2022-05-11T15:38:01.319227Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2022-05-11T15:38:01.345199Z 0 [ERROR] InnoDB: The innodb_system data file 'ibdata1' must be writable
+2022-05-11T15:38:01.346408Z 0 [ERROR] InnoDB: The innodb_system data file 'ibdata1' must be writable
+2022-05-11T15:38:01.347614Z 0 [ERROR] InnoDB: Plugin initialization aborted with error Generic error
+2022-05-11T15:38:01.562005Z 0 [ERROR] Plugin 'InnoDB' init function returned error.
+2022-05-11T15:38:01.563110Z 0 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+2022-05-11T15:38:01.564180Z 0 [ERROR] Failed to initialize builtin plugins.
+2022-05-11T15:38:01.564984Z 0 [ERROR] Aborting
+
+2022-05-11T15:38:01.565492Z 0 [Note] Binlog end
+2022-05-11T15:38:01.566085Z 0 [Note] Shutting down plugin 'CSV'
+2022-05-11T15:38:01.576675Z 0 [Note] E:\laragon\bin\mysql\mysql-5.7.33-winx64\bin\mysqld: Shutdown complete
+
