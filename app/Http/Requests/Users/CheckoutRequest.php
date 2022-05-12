@@ -24,13 +24,12 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone_number' => ['required','exists:user_data','regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
-            'email' => ['required','exists:user_data',
+            'phone_number' => ['required','regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
+            'email' => ['required',
             'regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/'],
             'provinces' => 'required',
             'districts' => 'required',
             'wards' => 'required',
-            'home_number' => 'required'
         ];
     }
 
@@ -39,9 +38,7 @@ class CheckoutRequest extends FormRequest
         return [
             'phone_number.required' => 'Số điện thoại không được để trống',
             'email.required' => 'Email không được để trống',
-            'email.exists' => 'Email không tồn tại trong hệ thống',
             'email.regex' => 'Email không đúng định dạng',
-            'phone_number.exists' => 'Số điện thoại không tồn tại trong hệ thống',
             'phone_number.regex' => 'Số điện thoại không hợp lệ',
             'provinces.required' => 'Tỉnh thành không được để trống',
             'districts.required' => 'Quận huyện không được để trống',

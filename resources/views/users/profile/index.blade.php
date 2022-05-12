@@ -28,12 +28,6 @@
                     <input type="password" id="confirm" name="confirm" class="form-control" placeholder="Xác Nhận Mật Khẩu" />
                     {!! $errors->first('confirm','<span class="d-block text-danger">:message</span>') !!}
                 </div>
-                <div class="form-group">
-                    <label class="f-bolder" for="">Captcha <span class="text-danger">(*)</span></label>
-                    {!! NoCaptcha::renderJs() !!}
-                    {!! NoCaptcha::display() !!}
-                    {!! $errors->first('g-recaptcha-response','<span class="d-block text-danger">:message</span>') !!}
-                </div>
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">

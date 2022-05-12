@@ -87,7 +87,7 @@ create table order_details (
     quantity int(11) not null
 );
 -- add user
-insert into user_data values(1, 'Văn Tiến', 'vantienn740@gmail.com', '$2a$12$u3bTC.7kHSf14VNeyVrLfuibcTO8ooi7vlaNrgjmcajaExOq/6ZZu', '037758370', 1, 22, 'Thanh Hóa', 1, '1651669770_avatar.webp', 1);
+insert into user_data values(1, 'Văn Tiến', 'vantienn740@gmail.com', '$2a$12$u3bTC.7kHSf14VNeyVrLfuibcTO8ooi7vlaNrgjmcajaExOq/6ZZu', '0377528370', 1, 22, 'Thanh Hóa', 1, '1651669770_avatar.webp', 1);
 insert into user_data values(2, 'Tiến Nguyễn', 'vantien2000@gmail.com', '$2a$12$u3bTC.7kHSf14VNeyVrLfuibcTO8ooi7vlaNrgjmcajaExOq/6ZZu', '0356789901', 1, 22, 'Thanh Hóa', 0, '1651669770_avatar.webp', 1);
 -- add categories
 insert into categories(category_name, status, category_type) values 

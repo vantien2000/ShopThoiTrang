@@ -55,10 +55,10 @@ class HomeController extends Controller
                 if ($request->file('avatar')->isValid()) {
                     $image_str = time() . '_avatar';
                     $data['avatar'] = $image_str . '.webp';
-                    $this->profileService->editProfile($request->email, $data);
                     convert_image_webp($request->file('avatar'), 80, 80)->save(public_path() . '/userfiles/images/users/' . $image_str . '.webp');
                 }
             }
+            $this->profileService->editProfile($request->email, $data);
         }
         return redirect()->route('users.home');
     }

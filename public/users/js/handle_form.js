@@ -234,6 +234,7 @@ $(document).ready(function() {
   $('#order_custom').on('submit', function(e) {
     e.preventDefault();
     $.post(location.origin + '/postCheckout', $(this).serialize(), function(res) {
+      console.log(res);
       if (res.error !== undefined) {
         Swal.fire({
           title: res.error,

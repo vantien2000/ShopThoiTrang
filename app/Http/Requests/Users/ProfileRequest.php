@@ -31,8 +31,7 @@ class ProfileRequest extends FormRequest
             'email' => ['required','exists:user_data','email',
             'regex:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'],
             'password' => 'required|min:6',
-            'confirm' => 'required|min:6',
-            'g-recaptcha-response' => 'required|captcha'
+            'confirm' => 'required|min:6'
         ];
     }
 

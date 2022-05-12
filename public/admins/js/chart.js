@@ -1,7 +1,7 @@
 $(document).ready(function () {
   var chartLeft = $('#chart_left').data('chart');
   var _labels = [];
-  var _data = ['0'];
+  var _data = [];
   for (let ele of chartLeft) {
     _labels.push('Tháng ' + ele.month);
     _data.push(ele.total);

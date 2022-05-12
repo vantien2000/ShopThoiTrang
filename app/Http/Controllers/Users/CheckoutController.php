@@ -68,7 +68,6 @@ class CheckoutController extends Controller
             }
             session()->forget('carts');
             session()->forget('result');
-            Mail::to($request->email)->send(new EmailInvoice($orderAfterSave));
             $result = !empty($result) ? $result : ['url' => route('users.home')];
             return response()->json($result);
         }
